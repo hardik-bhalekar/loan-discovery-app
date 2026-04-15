@@ -1,40 +1,36 @@
+import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  ClipboardList,
-  Search,
-  GitCompare,
-  Award,
-  Clock,
-  Shield,
-  Sparkles,
-  Wallet,
-  Home,
-  GraduationCap,
-  Car,
-} from 'lucide-react';
+import { ArrowRight, ClipboardList, Search, GitCompare, Award, Clock, Shield, Sparkles, Home, GraduationCap, Car, Wallet } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Button from '../components/Button';
+import ScrollMorphHero from '../components/ScrollMorphHero';
+import InteractiveRatesSection from '../components/InteractiveRatesSection';
+import AnimatedButton from '../components/ui/AnimatedButton';
+import PremiumCard from '../components/ui/PremiumCard';
+import PageContainer from '../components/ui/PageContainer';
+import SectionHeader from '../components/ui/SectionHeader';
+import LoadingState from '../components/ui/LoadingState';
+
+const GlobeSection = lazy(() => import('../components/sections/GlobeSection'));
 
 const steps = [
-  { icon: ClipboardList, title: 'Enter Details', desc: 'Share your income, credit score, and loan preferences.' },
-  { icon: Search, title: 'Check Eligibility', desc: 'Instantly see which loan types you qualify for.' },
-  { icon: GitCompare, title: 'Compare Options', desc: 'Compare rates, EMIs, and terms from top banks.' },
-  { icon: Award, title: 'Get Best Match', desc: 'Receive personalized recommendations ranked by fit.' },
+  { icon: ClipboardList, title: 'Enter Details', desc: 'Share your income, credit score, and preferred tenure in less than a minute.' },
+  { icon: Search, title: 'Check Eligibility', desc: 'Get instant confidence labels for each loan category with transparent criteria.' },
+  { icon: GitCompare, title: 'Compare Banks', desc: 'Sort offers by rate, EMI, and total cost in one clean comparison workflow.' },
+  { icon: Award, title: 'Choose Top Pick', desc: 'Use ranked recommendations with reasons designed for decision clarity.' },
 ];
 
 const benefits = [
-  { icon: Clock, title: 'Save Time', desc: 'Compare 10+ banks in one place without branch visits.' },
-  { icon: GitCompare, title: 'Compare Instantly', desc: 'Side-by-side comparison with real-time EMI calculation.' },
-  { icon: Shield, title: 'Transparent', desc: 'Clear breakdown of principal, interest, and fees.' },
-  { icon: Sparkles, title: 'Smart Suggestions', desc: 'Data-driven recommendations tailored to your profile.' },
+  { icon: Clock, title: 'Speed', desc: 'Save hours with one dashboard for calculations, eligibility, and bank discovery.' },
+  { icon: GitCompare, title: 'Precision', desc: 'EMI and total payment math update in real time as you tweak profile values.' },
+  { icon: Shield, title: 'Transparency', desc: 'No hidden assumptions. Every recommendation includes confidence and rationale.' },
+  { icon: Sparkles, title: 'Personalization', desc: 'Profile-aware ranking adapts offers to affordability and tenure fit.' },
 ];
 
 const loanTypes = [
-  { icon: Wallet, name: 'Personal Loan', rate: 'From 10.5%' },
-  { icon: Home, name: 'Home Loan', rate: 'From 8.4%' },
-  { icon: GraduationCap, name: 'Education Loan', rate: 'From 9.0%' },
+  { icon: Wallet, name: 'Personal Loan', rate: 'From 10.50%' },
+  { icon: Home, name: 'Home Loan', rate: 'From 8.40%' },
+  { icon: GraduationCap, name: 'Education Loan', rate: 'From 9.00%' },
   { icon: Car, name: 'Vehicle Loan', rate: 'From 9.25%' },
 ];
 
@@ -42,156 +38,132 @@ const banks = ['SBI', 'HDFC', 'ICICI', 'Axis', 'Kotak', 'Bank of Baroda', 'PNB',
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
+      <main className="flex-1 pb-10">
+        <ScrollMorphHero />
 
-      <main className="flex-1">
-        {/* ── Hero ─────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            {/* Left */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 leading-tight mb-4">
-                Find the Best Loan <span className="text-blue-600">for You</span> in Minutes
-              </h1>
-              <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-                Compare offers from India's top banks, check eligibility, and get
-                personalized loan recommendations — all in one place.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/dashboard">
-                  <Button>Get Started <ArrowRight className="w-4 h-4" /></Button>
-                </Link>
-                <Link to="/dashboard">
-                  <Button variant="outline">Check Eligibility</Button>
-                </Link>
-              </div>
-            </div>
+        <section className="py-16 sm:py-20">
+          <PageContainer>
+            <SectionHeader
+              eyebrow="How It Works"
+              title="A compact flow built for fast loan decisions"
+              description="Every step is designed for clarity, speed, and confidence across desktop and mobile journeys."
+              align="center"
+              className="mb-10"
+            />
 
-            {/* Right — simple card illustration */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-sm font-semibold text-gray-800 mb-1">Your Best Match</h3>
-              <p className="text-xs text-gray-400 mb-4">Based on your profile</p>
-              <div className="space-y-3">
-                {[
-                  { bank: 'SBI', rate: '8.5%', tag: 'Best Rate' },
-                  { bank: 'HDFC', rate: '9.0%', tag: 'Fast Approval' },
-                  { bank: 'ICICI', rate: '9.25%', tag: 'Flexible' },
-                ].map((item) => (
-                  <div key={item.bank} className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
-                    <div>
-                      <div className="text-sm font-medium text-gray-800">{item.bank}</div>
-                      <div className="text-xs text-gray-400">{item.rate} p.a.</div>
-                    </div>
-                    <span className="text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded font-medium">
-                      {item.tag}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── How It Works ─────────────────── */}
-        <section className="bg-white border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">How It Works</h2>
-            <p className="text-gray-500 text-center mb-10">Four simple steps to your ideal loan</p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, i) => {
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              {steps.map((step) => {
                 const Icon = step.icon;
                 return (
-                  <div key={step.title} className="bg-gray-50 rounded-xl p-6">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                      <Icon className="w-5 h-5 text-blue-600" />
+                  <PremiumCard key={step.title} className="h-full">
+                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--bg-secondary)] text-[var(--accent)]">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="text-sm font-semibold text-gray-800 mb-1">{step.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-                  </div>
+                    <h3 className="text-base font-semibold text-[var(--text-primary)]">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">{step.desc}</p>
+                  </PremiumCard>
                 );
               })}
             </div>
-          </div>
+          </PageContainer>
         </section>
 
-        {/* ── Benefits ─────────────────────── */}
-        <section className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">Benefits</h2>
-          <p className="text-gray-500 text-center mb-10">Everything for a smarter borrowing decision</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {benefits.map((b) => {
-              const Icon = b.icon;
-              return (
-                <div key={b.title} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex gap-4">
-                  <div className="w-10 h-10 shrink-0 bg-blue-50 rounded-lg flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-800 mb-1">{b.title}</h3>
-                    <p className="text-sm text-gray-500">{b.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <section className="py-16 sm:py-20">
+          <PageContainer>
+            <SectionHeader
+              eyebrow="Benefits"
+              title="Premium tooling for practical borrowing"
+              description="From exploration to shortlisting, every interaction is tuned for trust and usability."
+              align="center"
+              className="mb-10"
+            />
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              {benefits.map((benefit) => {
+                const Icon = benefit.icon;
+                return (
+                  <PremiumCard key={benefit.title} className="h-full">
+                    <div className="flex gap-4">
+                      <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--bg-secondary)] text-[var(--accent)]">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-semibold text-[var(--text-primary)]">{benefit.title}</h3>
+                        <p className="mt-2 text-sm text-[var(--text-muted)]">{benefit.desc}</p>
+                      </div>
+                    </div>
+                  </PremiumCard>
+                );
+              })}
+            </div>
+          </PageContainer>
         </section>
 
-        {/* ── Loan Types ───────────────────── */}
-        <section className="bg-white border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">Supported Loan Types</h2>
-            <p className="text-gray-500 text-center mb-10">We cover all major loan categories</p>
+        <InteractiveRatesSection />
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <Suspense fallback={<PageContainer><LoadingState label="Loading market globe" /></PageContainer>}>
+          <GlobeSection />
+        </Suspense>
+
+        <section className="py-16 sm:py-20">
+          <PageContainer>
+            <SectionHeader
+              eyebrow="Coverage"
+              title="Loan categories and lenders you can compare instantly"
+              align="center"
+              className="mb-10"
+            />
+
+            <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
               {loanTypes.map((loan) => {
                 const Icon = loan.icon;
                 return (
-                  <div key={loan.name} className="bg-gray-50 rounded-xl p-6 text-center">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Icon className="w-6 h-6 text-blue-600" />
+                  <PremiumCard key={loan.name} className="h-full text-center">
+                    <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--bg-secondary)] text-[var(--accent)]">
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-sm font-semibold text-gray-800 mb-1">{loan.name}</h3>
-                    <p className="text-xs text-gray-400">{loan.rate}</p>
-                  </div>
+                    <h3 className="text-sm font-semibold text-[var(--text-primary)]">{loan.name}</h3>
+                    <p className="mt-1 text-xs text-[var(--text-muted)]">{loan.rate}</p>
+                  </PremiumCard>
                 );
               })}
             </div>
-          </div>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {banks.map((bank) => (
+                <span key={bank} className="rounded-full border border-[var(--border-medium)] bg-[var(--bg-card)] px-4 py-2 text-xs font-semibold text-[var(--text-muted)]">
+                  {bank}
+                </span>
+              ))}
+            </div>
+          </PageContainer>
         </section>
 
-        {/* ── Trusted Banks ────────────────── */}
-        <section className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">Trusted Banks</h2>
-          <p className="text-gray-500 text-center mb-10">We compare offers from India's top institutions</p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {banks.map((bank) => (
-              <div key={bank} className="bg-white rounded-lg shadow-sm border border-gray-100 px-5 py-3">
-                <span className="text-sm font-medium text-gray-700">{bank}</span>
+        <section className="pb-16 sm:pb-20">
+          <PageContainer>
+            <div className="overflow-hidden rounded-3xl border border-[var(--border-medium)] bg-[linear-gradient(140deg,#0f766e,#145980)] p-8 text-center shadow-[0_22px_48px_rgba(10,52,76,0.38)] sm:p-12">
+              <h2 className="text-2xl font-semibold text-white sm:text-3xl">Ready to shortlist your next loan with confidence?</h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm text-white/85 sm:text-base">
+                Launch the dashboard to calculate EMIs, compare top banks, and act on personalized recommendations.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <Link to="/dashboard">
+                  <AnimatedButton variant="secondary" className="min-w-40">
+                    Open Dashboard
+                    <ArrowRight className="h-4 w-4" />
+                  </AnimatedButton>
+                </Link>
+                <Link to="/login">
+                  <AnimatedButton variant="outline" className="min-w-40 border-white/55 bg-white/10 text-white hover:bg-white/20">
+                    Secure Login
+                  </AnimatedButton>
+                </Link>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── CTA ──────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-6 pb-16">
-          <div className="bg-blue-600 rounded-xl p-10 md:p-14 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">
-              Ready to Find Your Perfect Loan?
-            </h2>
-            <p className="text-blue-100 mb-6 max-w-md mx-auto">
-              Join thousands of borrowers making smarter decisions.
-            </p>
-            <Link to="/dashboard">
-              <Button variant="secondary">Get Started Free <ArrowRight className="w-4 h-4" /></Button>
-            </Link>
-          </div>
+            </div>
+          </PageContainer>
         </section>
       </main>
-
       <Footer />
     </div>
   );

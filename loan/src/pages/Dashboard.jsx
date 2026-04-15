@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useMemo, useState } from 'react';
 import {
   User,
   ShieldCheck,
@@ -9,6 +9,7 @@ import {
   Landmark,
   Menu,
   X,
+  Building2,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
@@ -16,14 +17,20 @@ import EligibilityResult from '../components/EligibilityResult';
 import EMICalculator from '../components/EMICalculator';
 import ComparisonTable from '../components/ComparisonTable';
 import RecommendationCard from '../components/RecommendationCard';
+import IfscLookup from '../components/IfscLookup';
+import ThemeToggle from '../components/ThemeToggle';
+import PremiumCard from '../components/ui/PremiumCard';
+import EmptyState from '../components/ui/EmptyState';
 import { getRecommendations } from '../utils/recommendations';
+import { formatCompactINR } from '../utils/formatters';
 
 const tabs = [
   { id: 'profile', label: 'Profile', icon: User },
   { id: 'eligibility', label: 'Eligibility', icon: ShieldCheck },
   { id: 'emi', label: 'EMI Calculator', icon: Calculator },
   { id: 'compare', label: 'Comparison', icon: GitCompare },
-  { id: 'recommend', label: 'Recommendations', icon: Award },
+  { id: 'recommend', label: 'Top Picks', icon: Award },
+  { id: 'ifsc', label: 'IFSC Lookup', icon: Building2 },
 ];
 
 const defaultProfile = {
@@ -43,177 +50,156 @@ export default function Dashboard() {
   const [profile, setProfile] = useState(defaultProfile);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleProfileSubmit = useCallback((data) => {
-    setProfile(data);
-  }, []);
-
-  const recommendations = getRecommendations(profile);
+  const recommendations = useMemo(() => getRecommendations(profile), [profile]);
 
   const renderContent = () => {
     switch (activeTab) {
       case 'profile':
-        return <LoanForm onSubmit={handleProfileSubmit} />;
+        return <LoanForm initialProfile={profile} onSubmit={setProfile} />;
       case 'eligibility':
         return <EligibilityResult profile={profile} />;
       case 'emi':
-        return <EMICalculator />;
+        return <EMICalculator initialAmount={profile.loanAmount} initialTenure={profile.tenure} />;
       case 'compare':
         return (
-          <div>
-            <p className="text-sm text-gray-500 mb-4">
-              Comparing EMIs for ₹{(profile.loanAmount / 100000).toFixed(1)}L over {profile.tenure} years
+          <div className="space-y-4">
+            <p className="text-sm text-[var(--text-muted)]">
+              Comparing EMIs for {formatCompactINR(profile.loanAmount)} over {profile.tenure} years
             </p>
             <ComparisonTable loanAmount={profile.loanAmount} tenure={profile.tenure} />
           </div>
         );
       case 'recommend':
-        return (
+        return recommendations.length ? (
           <div>
-            <p className="text-sm text-gray-500 mb-6">
-              Top recommendations for ₹{(profile.loanAmount / 100000).toFixed(1)}L over {profile.tenure} years
+            <p className="mb-6 text-sm text-[var(--text-muted)]">
+              Top recommendations for {formatCompactINR(profile.loanAmount)} over {profile.tenure} years
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {recommendations.slice(0, 3).map((loan) => (
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {recommendations.slice(0, 6).map((loan) => (
                 <RecommendationCard key={loan.id} loan={loan} />
               ))}
             </div>
-            {recommendations.length > 3 && (
-              <div className="mt-8">
-                <h3 className="text-sm font-medium text-gray-500 mb-4">Other Options</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {recommendations.slice(3, 6).map((loan) => (
-                    <RecommendationCard key={loan.id} loan={loan} />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
+        ) : (
+          <EmptyState title="No recommendations yet" description="Update profile details and try again." />
         );
+      case 'ifsc':
+        return <IfscLookup />;
       default:
         return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* ── Sidebar ──────────────────────── */}
-      {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-gray-100 fixed top-0 left-0 h-full z-40">
-        {/* Logo */}
-        <div className="h-16 flex items-center px-6 border-b border-gray-100">
+    <div className="flex min-h-screen">
+      <aside className="fixed left-0 top-0 z-40 hidden h-full w-72 flex-col border-r border-[var(--border-subtle)] bg-[var(--bg-card)]/95 backdrop-blur lg:flex">
+        <div className="flex h-16 items-center justify-between border-b border-[var(--border-subtle)] px-6">
           <Link to="/" className="flex items-center gap-2">
-            <Landmark className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-semibold text-gray-800">LoanSmart</span>
+            <Landmark className="h-5 w-5 text-[var(--accent)]" />
+            <span className="text-sm font-semibold text-[var(--text-primary)]">LoanSmart</span>
           </Link>
+          <ThemeToggle />
         </div>
 
-        {/* Nav */}
-        <nav className="flex-1 py-4 px-3">
-          <div className="space-y-1">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const active = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-                    active
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
+        <nav className="flex-1 space-y-1 p-4">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const active = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={[
+                  'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all',
+                  active
+                    ? 'bg-[var(--bg-secondary)] text-[var(--accent)]'
+                    : 'text-[var(--text-muted)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]',
+                ].join(' ')}
+              >
+                <Icon className="h-4 w-4" />
+                {tab.label}
+              </button>
+            );
+          })}
         </nav>
 
-        {/* User */}
-        <div className="px-4 py-4 border-t border-gray-100">
-          <div className="flex items-center justify-between">
+        <div className="border-t border-[var(--border-subtle)] p-4">
+          <div className="flex items-center justify-between rounded-xl bg-[var(--bg-secondary)] p-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-xs font-semibold text-blue-600">
-                U
-              </div>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-xs font-semibold text-[var(--accent)]">U</div>
               <div>
-                <div className="text-xs font-medium text-gray-700">User</div>
-                <div className="text-[10px] text-gray-400">Free Plan</div>
+                <p className="text-xs font-semibold text-[var(--text-primary)]">User</p>
+                <p className="text-[10px] text-[var(--text-faint)]">Analyst plan</p>
               </div>
             </div>
-            <Link to="/" className="text-gray-400 hover:text-red-500 transition-colors" title="Logout">
-              <LogOut className="w-4 h-4" />
+            <Link to="/" className="text-[var(--text-faint)] transition-colors hover:text-red-500" title="Logout">
+              <LogOut className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </aside>
 
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
-        <div className="lg:hidden fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/20" onClick={() => setSidebarOpen(false)} />
-          <aside className="absolute left-0 top-0 h-full w-64 bg-white border-r border-gray-100 shadow-lg">
-            <div className="h-16 flex items-center justify-between px-6 border-b border-gray-100">
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button type="button" className="absolute inset-0 bg-black/35" onClick={() => setSidebarOpen(false)} aria-label="Close sidebar" />
+          <aside className="absolute left-0 top-0 h-full w-72 border-r border-[var(--border-subtle)] bg-[var(--bg-card)] p-4">
+            <div className="mb-4 flex items-center justify-between">
               <Link to="/" className="flex items-center gap-2">
-                <Landmark className="w-5 h-5 text-blue-600" />
-                <span className="text-sm font-semibold text-gray-800">LoanSmart</span>
+                <Landmark className="h-5 w-5 text-[var(--accent)]" />
+                <span className="text-sm font-semibold text-[var(--text-primary)]">LoanSmart</span>
               </Link>
-              <button onClick={() => setSidebarOpen(false)} className="text-gray-400 hover:text-gray-600">
-                <X className="w-5 h-5" />
+              <button onClick={() => setSidebarOpen(false)} className="rounded-lg p-2 hover:bg-[var(--bg-secondary)]" aria-label="Close menu">
+                <X className="h-5 w-5 text-[var(--text-muted)]" />
               </button>
             </div>
-            <nav className="py-4 px-3">
-              <div className="space-y-1">
-                {tabs.map((tab) => {
-                  const Icon = tab.icon;
-                  const active = activeTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => { setActiveTab(tab.id); setSidebarOpen(false); }}
-                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-                        active
-                          ? 'bg-blue-50 text-blue-600'
-                          : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {tab.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </nav>
+            <div className="mb-4"><ThemeToggle /></div>
+            <div className="space-y-1">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                const active = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setSidebarOpen(false);
+                    }}
+                    className={[
+                      'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold',
+                      active ? 'bg-[var(--bg-secondary)] text-[var(--accent)]' : 'text-[var(--text-muted)]',
+                    ].join(' ')}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
           </aside>
         </div>
       )}
 
-      {/* ── Main Content ─────────────────── */}
-      <div className="flex-1 lg:ml-64">
-        {/* Top bar (mobile) */}
-        <header className="lg:hidden h-16 bg-white border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-30">
-          <button onClick={() => setSidebarOpen(true)} className="text-gray-500 hover:text-gray-700">
-            <Menu className="w-5 h-5" />
+      <div className="flex-1 lg:ml-72">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-[var(--border-subtle)] bg-[color-mix(in_oklab,var(--bg-card)_92%,transparent)] px-4 backdrop-blur sm:px-6 lg:hidden">
+          <button onClick={() => setSidebarOpen(true)} className="rounded-lg p-2 hover:bg-[var(--bg-secondary)]" aria-label="Open menu">
+            <Menu className="h-5 w-5 text-[var(--text-primary)]" />
           </button>
-          <Link to="/" className="flex items-center gap-2">
-            <Landmark className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-semibold text-gray-800">LoanSmart</span>
-          </Link>
-          <div className="w-5" /> {/* spacer */}
+          <span className="text-sm font-semibold text-[var(--text-primary)]">{tabs.find((item) => item.id === activeTab)?.label}</span>
+          <ThemeToggle />
         </header>
 
-        {/* Content */}
-        <main className="p-8 max-w-5xl">
-          {/* Page heading */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-semibold text-gray-800">
-              {tabs.find((t) => t.id === activeTab)?.label}
-            </h1>
-          </div>
+        <main className="mx-auto w-full max-w-6xl p-4 sm:p-6 lg:p-8">
+          <PremiumCard className="mb-6 flex flex-wrap items-center justify-between gap-4" hover={false}>
+            <div>
+              <p className="text-xs uppercase tracking-[0.16em] text-[var(--text-faint)]">Dashboard</p>
+              <h1 className="text-2xl font-semibold text-[var(--text-primary)]">{tabs.find((item) => item.id === activeTab)?.label}</h1>
+            </div>
+            <p className="text-sm text-[var(--text-muted)]">
+              Profile: {formatCompactINR(profile.loanAmount)} • {profile.tenure} years • Credit {profile.creditScore}
+            </p>
+          </PremiumCard>
 
-          {/* Tab content */}
           {renderContent()}
         </main>
       </div>

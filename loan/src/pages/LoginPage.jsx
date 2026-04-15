@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Mail, Eye, EyeOff, Landmark, Shield, ArrowRight } from 'lucide-react';
-import Button from '../components/Button';
+import { Lock, Mail, Eye, EyeOff, Shield, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Button from '../components/ui/Button';
+import FormField from '../components/ui/FormField';
+import FormWrapper from '../components/FormWrapper';
 import Navbar from '../components/Navbar';
+import PageContainer from '../components/ui/PageContainer';
+import Alert from '../components/ui/Alert';
 
 export default function LoginPage() {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,92 +21,86 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-6 py-10">
-        <div className="w-full max-w-md">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Landmark className="w-6 h-6 text-blue-600" />
-            </div>
-            <h1 className="text-2xl font-semibold text-gray-800 mb-1">Welcome Back</h1>
-            <p className="text-sm text-gray-500">Sign in to access your dashboard</p>
-          </div>
-
-          {/* Card */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-            {/* Security badge */}
-            <div className="flex items-center gap-2 bg-green-50 border border-green-100 rounded-lg px-3 py-2 mb-6">
-              <Shield className="w-4 h-4 text-green-600" />
-              <span className="text-xs text-green-700 font-medium">256-bit SSL encrypted</span>
-            </div>
-
-            <form onSubmit={handleLogin} className="space-y-4">
-              {/* Email */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    className="border border-gray-200 rounded-lg px-4 py-2.5 pl-10 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
+        <PageContainer className="w-full max-w-md">
+          <FormWrapper
+            title="Welcome Back"
+            subtitle="Sign in to access your loan dashboard"
+            icon={Shield}
+            footer={
+              <div className="text-center space-y-3">
+                <p className="text-xs text-[var(--text-faint)]">
+                  Don't have an account?{' '}
+                  <Link to="/dashboard" className="text-[var(--accent)] font-semibold hover:underline">
+                    Start exploring →
+                  </Link>
+                </p>
+                <div className="flex items-center justify-center gap-1 text-xs text-[var(--text-faint)]">
+                  <Lock className="h-3 w-3" />
+                  <span>256-bit SSL encrypted</span>
                 </div>
               </div>
+            }
+          >
+            <Alert 
+              type="info" 
+              message="Demo: Any email and password will work" 
+              dismissible={true}
+              className="mb-6"
+            />
 
-              {/* Password */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type={showPass ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    className="border border-gray-200 rounded-lg px-4 py-2.5 pl-10 pr-10 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPass(!showPass)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                  >
-                    {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
+            <form onSubmit={handleLogin} className="space-y-5">
+              <FormField
+                label="Email Address"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                icon={Mail}
+                required
+              />
+
+              <FormField
+                label="Password"
+                type={showPass ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                icon={Lock}
+                required
+              />
 
               {/* Options */}
               <div className="flex items-center justify-between">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-600" />
-                  <span className="text-xs text-gray-500">Remember me</span>
+                  <input 
+                    type="checkbox" 
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="w-4 h-4 rounded border-[var(--border-medium)] text-[var(--accent)] bg-[var(--bg-secondary)]"
+                  />
+                  <span className="text-xs text-[var(--text-faint)]">Remember me</span>
                 </label>
-                <button type="button" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+                <button type="button" className="text-xs text-[var(--accent)] hover:text-[var(--accent)]/80 font-semibold">
                   Forgot password?
                 </button>
               </div>
 
-              <Button type="submit" className="w-full">
-                Sign In <ArrowRight className="w-4 h-4" />
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button type="submit" variant="primary" size="lg" fullWidth className="gap-2">
+                  Sign In
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </motion.div>
             </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-500">
-                Don't have an account?{' '}
-                <Link to="/dashboard" className="text-blue-600 font-medium hover:text-blue-700">
-                  Sign up free
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
+          </FormWrapper>
+        </PageContainer>
       </main>
     </div>
   );
