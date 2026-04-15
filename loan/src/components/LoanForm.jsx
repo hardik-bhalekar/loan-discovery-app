@@ -7,12 +7,18 @@ const loanPurposes = ['Home Purchase', 'Education', 'Vehicle', 'Personal Expense
 const loanTypeOptions = ['Personal Loan', 'Home Loan', 'Education Loan', 'Vehicle Loan'];
 const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune', 'Ahmedabad', 'Jaipur', 'Lucknow'];
 
-export default function LoanForm({ onSubmit }) {
-  const [form, setForm] = useState({
-    age: 30, occupation: 'Salaried', monthlyIncome: 50000,
-    creditScore: 750, city: 'Mumbai', loanAmount: 1000000,
-    purpose: 'Home Purchase', loanType: 'Personal Loan', tenure: 5,
-  });
+export default function LoanForm({ onSubmit, initialProfile }) {
+  const [form, setForm] = useState(() => ({
+    age: initialProfile?.age ?? 30,
+    occupation: initialProfile?.occupation ?? 'Salaried',
+    monthlyIncome: initialProfile?.monthlyIncome ?? 50000,
+    creditScore: initialProfile?.creditScore ?? 750,
+    city: initialProfile?.city ?? 'Mumbai',
+    loanAmount: initialProfile?.loanAmount ?? 1000000,
+    purpose: initialProfile?.purpose ?? 'Home Purchase',
+    loanType: initialProfile?.loanType ?? 'Personal Loan',
+    tenure: initialProfile?.tenure ?? 5,
+  }));
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 

@@ -1,27 +1,30 @@
+import { formatCompactINR, toSafeNumber } from './formatters';
+
 /**
- * Calculate EMI using the standard formula:
- * EMI = P × r × (1 + r)^n / ((1 + r)^n - 1)
- *
- * @param {number} principal - Loan amount
- * @param {number} annualRate - Annual interest rate (%)
- * @param {number} tenureMonths - Tenure in months
- * @returns {{ emi: number, totalInterest: number, totalPayment: number }}
+ * EMI = P * r * (1+r)^n / ((1+r)^n - 1)
  */
 export function calculateEMI(principal, annualRate, tenureMonths) {
-  if (principal <= 0 || annualRate <= 0 || tenureMonths <= 0) {
-    return { emi: 0, totalInterest: 0, totalPayment: 0 };
+  const p = Math.max(0, toSafeNumber(principal, 0));
+  const annual = Math.max(0, toSafeNumber(annualRate, 0));
+  const n = Math.max(0, Math.round(toSafeNumber(tenureMonths, 0)));
+
+  if (p <= 0 || n <= 0) {
+    return { emi: 0, totalInterest: 0, totalPayment: 0, monthlyRate: 0 };
   }
 
-  const monthlyRate = annualRate / 12 / 100;
-  const factor = Math.pow(1 + monthlyRate, tenureMonths);
-  const emi = (principal * monthlyRate * factor) / (factor - 1);
-  const totalPayment = emi * tenureMonths;
-  const totalInterest = totalPayment - principal;
+  const monthlyRate = annual / 12 / 100;
+  const emi = monthlyRate === 0
+    ? p / n
+    : (p * monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+
+  const totalPayment = emi * n;
+  const totalInterest = totalPayment - p;
 
   return {
     emi: Math.round(emi),
-    totalInterest: Math.round(totalInterest),
+    totalInterest: Math.max(0, Math.round(totalInterest)),
     totalPayment: Math.round(totalPayment),
+    monthlyRate,
   };
 }
 
@@ -29,15 +32,21 @@ export function calculateEMI(principal, annualRate, tenureMonths) {
  * Generate monthly amortization schedule
  */
 export function generateAmortization(principal, annualRate, tenureMonths) {
-  const monthlyRate = annualRate / 12 / 100;
-  const { emi } = calculateEMI(principal, annualRate, tenureMonths);
+  const p = Math.max(0, toSafeNumber(principal, 0));
+  const annual = Math.max(0, toSafeNumber(annualRate, 0));
+  const n = Math.max(0, Math.round(toSafeNumber(tenureMonths, 0)));
 
-  let balance = principal;
+  if (p <= 0 || n <= 0) return [];
+
+  const monthlyRate = annual / 12 / 100;
+  const { emi } = calculateEMI(p, annual, n);
+
+  let balance = p;
   const schedule = [];
 
-  for (let month = 1; month <= tenureMonths; month++) {
-    const interestPaid = Math.round(balance * monthlyRate);
-    const principalPaid = emi - interestPaid;
+  for (let month = 1; month <= n; month++) {
+    const interestPaid = Math.round(monthlyRate === 0 ? 0 : balance * monthlyRate);
+    const principalPaid = Math.min(balance, Math.max(0, emi - interestPaid));
     balance = Math.max(0, balance - principalPaid);
 
     schedule.push({
@@ -56,11 +65,5 @@ export function generateAmortization(principal, annualRate, tenureMonths) {
  * Format currency in Indian format
  */
 export function formatCurrency(amount) {
-  if (amount >= 10000000) {
-    return `₹${(amount / 10000000).toFixed(2)} Cr`;
-  }
-  if (amount >= 100000) {
-    return `₹${(amount / 100000).toFixed(2)} L`;
-  }
-  return `₹${amount.toLocaleString('en-IN')}`;
+  return formatCompactINR(amount);
 }
