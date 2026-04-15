@@ -1,0 +1,9 @@
+com\loandiscovery\dto\IfscResponse.class
+com\loandiscovery\LoanDiscoveryApplication.class
+com\loandiscovery\model\Branch.class
+com\loandiscovery\config\WebConfig.class
+com\loandiscovery\controller\BankController.class
+com\loandiscovery\repository\BranchRepository.class
+com\loandiscovery\exception\GlobalExceptionHandler.class
+com\loandiscovery\config\DataSeeder.class
+com\loandiscovery\service\IfscService.class
