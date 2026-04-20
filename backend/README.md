@@ -35,3 +35,19 @@ If you want to keep the values outside the terminal, create a PowerShell profile
 Set-Location 'C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend'
 \.\mvnw.cmd -q -DskipTests compile
 ```
+
+## Render Deployment
+
+Render can run this backend as a Java web service using [../render.yaml](../render.yaml).
+
+Use these environment variables in Render:
+
+- `DB_URL`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- `JWT_SECRET`
+- `JWT_EXPIRATION_MS`
+- `ADMIN_EMAIL`
+- `APP_CORS_ALLOWED_ORIGINS`
+
+The backend listens on Render’s `PORT` automatically through `backend/src/main/resources/application.properties`.

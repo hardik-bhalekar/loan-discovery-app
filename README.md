@@ -207,6 +207,43 @@ For a production build check:
 npm run build
 ```
 
+## Render Deployment
+
+The backend can be deployed to [Render](https://render.com/) as a Java web service.
+
+### What Render Needs
+
+- A web service created from this repository.
+- A reachable MySQL database. Render does not provide MySQL natively, so use an external MySQL host.
+- The backend environment variables listed above.
+
+### Render Blueprint
+
+This repository includes [render.yaml](render.yaml) for the backend service.
+
+### Render Environment Variables
+
+Set these in the Render service:
+
+- `DB_URL`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- `JWT_SECRET`
+- `JWT_EXPIRATION_MS` if you want a custom token lifetime
+- `ADMIN_EMAIL`
+- `APP_CORS_ALLOWED_ORIGINS` with your frontend URL, for example `https://your-frontend.onrender.com`
+
+### Build And Start Commands
+
+The Render blueprint uses:
+
+- Build: `mvn -q -DskipTests package`
+- Start: `java -jar target/loan-discovery-backend-1.0.0.jar`
+
+### Important Note
+
+The app now listens on Render’s `PORT` automatically, so no extra port override is needed.
+
 ## Verification Status
 
 The following checks have been validated locally during development:
