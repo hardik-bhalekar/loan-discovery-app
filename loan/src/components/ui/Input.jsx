@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { cva } from 'class-variance-authority';
 
 const inputVariants = cva(
-  'w-full px-4 py-2.5 rounded-lg border border-[var(--border-medium)] bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-faint)] transition-colors focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20',
+  'w-full rounded-xl border border-[var(--border-medium)] bg-[color-mix(in_oklab,var(--bg-card)_92%,var(--bg-secondary)_8%)] px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-faint)] shadow-[0_1px_0_rgba(255,255,255,0.25)] transition-all duration-200 focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/15',
   {
     variants: {
       size: {

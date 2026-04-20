@@ -1,42 +1,41 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 export default function ScrollMorphHero() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const [textLines, setTextLines] = useState(['Discover Your', 'Perfect Loan']);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
+  const textLines = ['Discover Your', 'Perfect Loan'];
 
   // Scroll-driven morphing transformations
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
-  const blur = useTransform(scrollYProgress, [0, 0.5], [0, 10]);
-  const rotation = useTransform(scrollYProgress, [0, 0.4], [0, 3]);
+  const scale = useTransform(scrollYProgress, [0, 0.6], [1, 0.97]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.9]);
+  const y = useTransform(scrollYProgress, [0, 0.6], [0, -26]);
+  const rotation = useTransform(scrollYProgress, [0, 0.6], [0, 1.5]);
 
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[150vh] bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-primary)]"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-primary)] pt-16"
     >
-      {/* Fixed Background */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial from-[var(--accent)]/20 via-transparent to-transparent" />
-        <div className="absolute top-20 right-10 w-96 h-96 bg-[var(--accent)]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+      {/* Hero-local background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="hero-glow absolute inset-0 opacity-80" />
+        <div className="absolute right-10 top-20 h-96 w-96 rounded-full bg-[var(--accent)]/10 blur-3xl" />
+        <div className="absolute bottom-20 left-10 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
       </div>
 
       {/* Content Container */}
       <motion.div
         style={{ scale, y, opacity }}
-        className="sticky top-0 h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+        className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 pb-14 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8"
       >
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="mx-auto max-w-5xl text-center">
           {/* Main Heading with Letter Spacing Morph */}
           <motion.div
             style={{ rotate: rotation }}
             className="mb-8"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[var(--text-primary)] leading-tight">
+            <h1 className="text-5xl font-black leading-[1.04] tracking-tight text-[var(--text-primary)] sm:text-6xl md:text-7xl lg:text-[5rem]">
               {textLines.map((line, i) => (
                 <motion.div
                   key={i}
@@ -57,7 +56,7 @@ export default function ScrollMorphHero() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-[var(--text-muted)] sm:text-xl"
           >
             Compare rates, calculate EMIs, and find the best loan options tailored to your needs with our intelligent loan discovery platform.
           </motion.p>
@@ -67,12 +66,12 @@ export default function ScrollMorphHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex items-center justify-center gap-4 sm:flex-row"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-[var(--accent)] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+              className="flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-4 font-semibold text-white shadow-[0_18px_34px_rgba(15,118,110,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-strong)] hover:shadow-[0_22px_40px_rgba(15,118,110,0.34)]"
             >
               Get Started
               <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
@@ -83,7 +82,7 @@ export default function ScrollMorphHero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 border-2 border-[var(--border-medium)] text-[var(--text-primary)] font-semibold rounded-full hover:bg-[var(--bg-secondary)] transition-all duration-300"
+              className="rounded-full border border-[var(--border-medium)] px-8 py-4 font-semibold text-[var(--text-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--bg-secondary)]"
             >
               Learn More
             </motion.button>
@@ -94,7 +93,7 @@ export default function ScrollMorphHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-3 gap-6 mt-16 pt-16 border-t border-[var(--border-subtle)]"
+            className="mt-10 grid grid-cols-3 gap-4 border-t border-[var(--border-subtle)] pt-8 sm:gap-6"
           >
             {[
               { number: '100K+', label: 'Users' },
@@ -112,7 +111,7 @@ export default function ScrollMorphHero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="pointer-events-none absolute bottom-4 left-1/2 z-20 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

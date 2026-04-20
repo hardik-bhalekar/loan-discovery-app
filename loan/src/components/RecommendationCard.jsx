@@ -2,9 +2,21 @@ import { Trophy, Award, Medal, CheckCircle } from 'lucide-react';
 import { formatCurrency } from '../utils/emiCalculator';
 
 const badgeConfig = {
-  'Best Match': { icon: Trophy, label: 'Best Match', bg: 'bg-amber-50', text: 'text-amber-600' },
-  'Runner Up': { icon: Award, label: 'Runner Up', bg: 'bg-blue-50', text: 'text-blue-600' },
-  'Great Option': { icon: Medal, label: 'Great Option', bg: 'bg-green-50', text: 'text-green-600' },
+  'Best Match': {
+    icon: Trophy,
+    label: 'Best Match',
+    tone: 'border-amber-400/40 bg-amber-500/15 text-amber-400',
+  },
+  'Runner Up': {
+    icon: Award,
+    label: 'Runner Up',
+    tone: 'border-sky-400/40 bg-sky-500/15 text-sky-400',
+  },
+  'Great Option': {
+    icon: Medal,
+    label: 'Great Option',
+    tone: 'border-emerald-400/40 bg-emerald-500/15 text-emerald-400',
+  },
 };
 
 export default function RecommendationCard({ loan }) {
@@ -13,62 +25,62 @@ export default function RecommendationCard({ loan }) {
   const isBest = loan.badge === 'Best Match';
 
   return (
-    <div className={`bg-white rounded-xl shadow-sm border p-6 ${
-      isBest ? 'border-2 border-blue-500' : 'border-gray-100'
-    }`}>
-      {/* Badge */}
+    <article
+      className={[
+        'group rounded-[1.35rem] border bg-[color-mix(in_oklab,var(--bg-card)_88%,transparent)] p-6 transition-all duration-300',
+        'shadow-[0_14px_34px_rgba(7,34,59,0.10)] hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(7,34,59,0.20)]',
+        isBest ? 'border-[var(--accent)]/70' : 'border-[var(--border-subtle)]',
+      ].join(' ')}
+    >
       {badge && (
-        <div className={`inline-flex items-center gap-1 ${badge.bg} ${badge.text} px-2.5 py-1 rounded text-xs font-semibold mb-4`}>
-          <BadgeIcon className="w-3 h-3" />
+        <div className={`mb-4 inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold ${badge.tone}`}>
+          <BadgeIcon className="h-3.5 w-3.5" />
           {badge.label}
         </div>
       )}
 
-      {/* Bank name */}
-      <div className="flex items-center gap-2.5 mb-4">
+      <div className="mb-5 flex items-center gap-3">
         <div
-          className="w-8 h-8 rounded flex items-center justify-center text-white font-bold text-[10px]"
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-[10px] font-bold text-white shadow-[0_6px_14px_rgba(0,0,0,0.25)]"
           style={{ backgroundColor: loan.color }}
         >
           {loan.shortName?.slice(0, 2) || '#'}
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-gray-800">{loan.bankName}</h3>
-          <p className="text-xs text-gray-400">Rank #{loan.rank}</p>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">{loan.bankName}</h3>
+          <p className="text-xs text-[var(--text-faint)]">Rank #{loan.rank}</p>
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
+      <div className="mb-5 grid grid-cols-2 gap-3">
         <Stat label="Interest Rate" value={`${loan.interestRate}%`} highlight />
         <Stat label="Monthly EMI" value={formatCurrency(loan.emi)} highlight />
         <Stat label="Total Repayment" value={formatCurrency(loan.totalPayment)} />
         <Stat label="Total Interest" value={formatCurrency(loan.totalInterest)} />
       </div>
 
-      {/* Reasons */}
       <div>
-        <h4 className="text-[10px] font-medium text-gray-400 uppercase tracking-wider mb-2">
+        <h4 className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--text-faint)]">
           Why Recommended
         </h4>
         <ul className="space-y-1.5">
           {loan.reasons.map((reason, i) => (
-            <li key={i} className="flex items-start gap-2 text-xs text-gray-500">
-              <CheckCircle className="w-3 h-3 text-green-500 mt-0.5 shrink-0" />
+            <li key={i} className="flex items-start gap-2 text-xs leading-5 text-[var(--text-muted)]">
+              <CheckCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
               {reason}
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </article>
   );
 }
 
 function Stat({ label, value, highlight }) {
   return (
-    <div className="bg-gray-50 rounded-lg p-3">
-      <div className="text-[10px] text-gray-400 uppercase tracking-wider mb-0.5">{label}</div>
-      <div className={`text-sm font-semibold ${highlight ? 'text-blue-600' : 'text-gray-800'}`}>{value}</div>
+    <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/55 p-3 shadow-[0_8px_18px_rgba(7,34,59,0.06)]">
+      <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--text-faint)]">{label}</div>
+      <div className={`text-sm font-semibold ${highlight ? 'text-[var(--accent)]' : 'text-[var(--text-primary)]'}`}>{value}</div>
     </div>
   );
 }

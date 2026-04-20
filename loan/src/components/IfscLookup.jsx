@@ -49,7 +49,7 @@ export default function IfscLookup() {
         <Card>
           <CardBody className="p-8">
             <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">IFSC Code Lookup</h3>
-            <p className="text-sm text-[var(--text-secondary)] mb-6">
+            <p className="mb-6 text-sm text-[var(--text-muted)]">
               Enter any IFSC code to get branch details and supported payment methods
             </p>
 
@@ -140,7 +140,7 @@ export default function IfscLookup() {
                   </motion.div>
                   <div>
                     <h4 className="text-xl font-bold text-[var(--text-primary)]">{result.BANK}</h4>
-                    <p className="text-sm text-[var(--text-secondary)] mt-1">{result.BRANCH}</p>
+                    <p className="mt-1 text-sm text-[var(--text-muted)]">{result.BRANCH}</p>
                     <code className="text-sm font-mono font-semibold text-[var(--accent)] mt-2 block">{result.IFSC}</code>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export default function IfscLookup() {
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-faint)] mb-1">Location</p>
                       <p className="text-sm text-[var(--text-primary)]">{result.CITY}, {result.DISTRICT}</p>
-                      <p className="text-xs text-[var(--text-secondary)]">{result.STATE}</p>
+                      <p className="text-xs text-[var(--text-muted)]">{result.STATE}</p>
                     </div>
                   </motion.div>
 

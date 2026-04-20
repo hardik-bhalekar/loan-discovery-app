@@ -1,0 +1,1544 @@
+
+========================================================================================================================
+PROJECT DEEP ANALYSIS REPORT
+========================================================================================================================
+Generated At: 2026-04-20 23:29:15 +05:30
+Project Root: C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application
+Output File: C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\PROJECT_DEEP_ANALYSIS.txt
+PowerShell: 5.1.26100.8115
+
+========================================================================================================================
+1) ROOT DIRECTORY SNAPSHOT
+========================================================================================================================
+
+Mode   LastWriteTime       Length Name                     
+----   -------------       ------ ----                     
+da-h-- 15-04-2026 21:40:08        .git                     
+d----- 20-04-2026 23:08:02        .github                  
+d----- 15-04-2026 19:53:20        .vscode                  
+d----- 15-04-2026 20:31:55        backend                  
+d----- 15-04-2026 19:28:24        loan                     
+d----- 20-04-2026 23:24:04        tools                    
+-a---- 20-04-2026 23:29:15 801    PROJECT_DEEP_ANALYSIS.txt
+
+
+
+
+========================================================================================================================
+2) GIT METADATA
+========================================================================================================================
+Git Version: git version 2.52.0.windows.1
+Active Branch: appmod/java-upgrade-20260415135541
+<none>
+Remotes:
+origin	https://github.com/Omkargagare/Loan-Discovery-Web-Application.git (fetch)
+origin	https://github.com/Omkargagare/Loan-Discovery-Web-Application.git (push)
+<none>
+Status:
+?? PROJECT_DEEP_ANALYSIS.txt
+?? backend/target/
+?? tools/
+<none>
+Last Commit:
+commit f5e612d2f01a1aa61d5fbf0b560e1e825b44f981
+Author:     Bhalekar Hardik Hemant <hardik.bhalekar10@gmail.com>
+AuthorDate: Wed Apr 15 21:38:52 2026 +0530
+Commit:     GitHub <noreply@github.com>
+CommitDate: Wed Apr 15 21:38:52 2026 +0530
+
+    Delete package.json
+
+========================================================================================================================
+3) FILE INVENTORY SUMMARY
+========================================================================================================================
+Total Files: 102
+Total Size (bytes): 543903
+
+By Extension:
+
+Count Name       
+----- ----       
+   48 .jsx       
+   10 .js        
+    9 .class     
+    9 .java      
+    4 .md        
+    4 .svg       
+    3 .gitignore 
+    2 .lst       
+    2 .json      
+    2 .ps1       
+    2 .properties
+    1 .css       
+    1 .png       
+    1 .xml       
+    1 .sh        
+    1 .log       
+    1 .html      
+    1 .txt       
+
+
+
+
+========================================================================================================================
+4) TOP 100 LARGEST FILES
+========================================================================================================================
+
+FullName                                                                                                        
+--------                                                                                                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\lo...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\assets\hero.png                         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\tools\generate-deep-analysis.ps1                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\public\favicon.svg                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\assets\vite.svg                         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\servi...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ScrollMorphHero.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\public\icons.svg                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\servic...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\model...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pl...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pr...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\assets\react.svg                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EligibilityResult.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\dto\I...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\InteractiveRatesSection.jsx  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\index.css                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\InteractiveRateCard.jsx      
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\excep...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\pom.xml                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\data\bankData.js                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\model\...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\eligibility.js                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\RecommendationCard.jsx       
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\contr...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ComparisonTable.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\dto\If...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\confi...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\EMIDonut3D.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\recommendations.js                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanCard.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\DataTable.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\DashboardComponents.jsx      
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\FinancialCore.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\emiCalculator.js                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Alert.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\DashboardTabs.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Modal.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Button.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\AnimatedButton.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\FormWrapper.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\config...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\contro...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\confi...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\data\loanTypes.js                       
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\formatters.js                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ThemeToggle.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\except...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Card.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Footer.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Input.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\maven-status\maven-compiler-plu...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Tabs.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\FormField.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\repos...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Select.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Badge.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\config...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\eslint.config.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Spinner.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\com\loandiscovery\LoanD...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\StatCard.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\.github\java-upgrade\hooks\scripts\recordToolU...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\reposi...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\PremiumCard.jsx           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\SectionHeader.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\resources\application.properties
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\classes\application.properties    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\.github\java-upgrade\hooks\scripts\recordToolU...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\EmptyState.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\LoadingState.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\main.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Label.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\target\maven-status\maven-compiler-plu...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Button.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\src\main\java\com\loandiscovery\LoanDi...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\.gitignore                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\PageContainer.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\tailwind.config.js                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\vite.config.js                              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\.github\java-upgrade\.gitignore                  
+
+
+
+
+========================================================================================================================
+5) KEY CONFIG FILES CHECK
+========================================================================================================================
+package.json => MISSING
+package-lock.json => MISSING
+yarn.lock => MISSING
+pnpm-lock.yaml => MISSING
+tsconfig.json => MISSING
+jsconfig.json => MISSING
+vite.config.js => MISSING
+vite.config.ts => MISSING
+webpack.config.js => MISSING
+next.config.js => MISSING
+tailwind.config.js => MISSING
+tailwind.config.ts => MISSING
+.eslintrc => MISSING
+.eslintrc.js => MISSING
+.eslintrc.json => MISSING
+eslint.config.js => MISSING
+.prettierrc => MISSING
+.prettierrc.json => MISSING
+.editorconfig => MISSING
+.env => MISSING
+.env.local => MISSING
+.env.development => MISSING
+.env.production => MISSING
+README.md => MISSING
+Dockerfile => MISSING
+docker-compose.yml => MISSING
+.gitignore => MISSING
+
+========================================================================================================================
+6) PACKAGE.JSON ANALYSIS
+========================================================================================================================
+package.json not found.
+
+========================================================================================================================
+7) SOURCE FILES LIST
+========================================================================================================================
+
+FullName                                                                                                        
+--------                                                                                                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pl...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pr...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\eslint.config.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\EMIDonut3D.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\FinancialCore.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Button.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ComparisonTable.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\DashboardComponents.jsx      
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\DashboardTabs.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EligibilityResult.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Footer.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\FormWrapper.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\InteractiveRateCard.jsx      
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\InteractiveRatesSection.jsx  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanCard.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\RecommendationCard.jsx       
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ScrollMorphHero.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ThemeToggle.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Alert.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\AnimatedButton.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Badge.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Button.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Card.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\DataTable.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\EmptyState.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\FormField.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Input.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Label.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\LoadingState.jsx          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Modal.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\PageContainer.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\PremiumCard.jsx           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\SectionHeader.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Select.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Spinner.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\StatCard.jsx              
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Tabs.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\data\bankData.js                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\data\loanTypes.js                       
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\index.css                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\main.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\eligibility.js                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\emiCalculator.js                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\formatters.js                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\recommendations.js                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\tailwind.config.js                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\vite.config.js                              
+
+
+
+
+========================================================================================================================
+8) CODE METRICS (PER EXTENSION)
+========================================================================================================================
+
+Extension Files Lines
+--------- ----- -----
+.json         2  4349
+.jsx         48  2911
+.js          10   497
+.md           4   407
+.css          1   121
+.html         1    17
+
+
+
+
+========================================================================================================================
+9) ROUTING INDICATORS
+========================================================================================================================
+
+Path                                                                                                           
+----                                                                                                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Footer.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Hero3D.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\main.jsx                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\main.jsx                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\main.jsx                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+
+
+
+
+========================================================================================================================
+10) STATE MANAGEMENT INDICATORS
+========================================================================================================================
+
+Path                                                                                                         Lin
+                                                                                                             eNu
+                                                                                                             mbe
+                                                                                                               r
+----                                                                                                         ---
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        657
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        686
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        719
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        721
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        728
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        729
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        734
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        740
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        745
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        576
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        578
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        588
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        594
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        661
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        667
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        682
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        684
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        688
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        690
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        694
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        998
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        001
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        003
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        281
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                        283
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx           1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx           7
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx           8
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\EMICalculator.jsx           9
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx              1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx             13
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx             14
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx             15
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx             16
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx               11
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx               22
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx               23
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                 10
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ScrollMorphHero.jsx         2
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ScrollMorphHero.jsx         7
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx   1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx  93
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Alert.jsx                2
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Alert.jsx                5
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Tabs.jsx                 1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Tabs.jsx                 4
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx               1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx               6
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx              14
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                   49
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                   50
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                   51
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    1
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                   13
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                   14
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                   15
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                   16
+
+
+
+
+========================================================================================================================
+11) API/NETWORK INDICATORS
+========================================================================================================================
+
+Path                                                                                                            
+----                                                                                                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\index.html                                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md                                   
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Spinner.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+
+
+
+
+========================================================================================================================
+12) AUTH/SECURITY INDICATORS
+========================================================================================================================
+
+Path                                                                                                           
+----                                                                                                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\eslint.config.js                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\eslint.config.js                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json                               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                          
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\App.jsx                                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\Navbar.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\ScrollMorphHero.jsx
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Badge.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Button.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Input.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LandingPage.jsx                  
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\LoginPage.jsx                    
+
+
+
+
+========================================================================================================================
+13) VALIDATION/ERROR-HANDLING INDICATORS
+========================================================================================================================
+
+Path                                                                                                            
+----                                                                                                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pl...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pl...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\eslint.config.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\EMIDonut3D.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\FinancialCore.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\FinancialCore.jsx         
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\3d\ThemeParticles.jsx        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\IfscLookup.jsx               
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\LoanForm.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\sections\GlobeSection.jsx    
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Alert.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\EmptyState.jsx            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\FormField.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\FormField.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\FormField.jsx             
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\components\ui\Input.jsx                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\context\ThemeContext.jsx                
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\pages\Dashboard.jsx                     
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\src\utils\api.js                            
+
+
+
+
+========================================================================================================================
+14) TODO/FIXME/HACK
+========================================================================================================================
+
+Path                                                                                                            
+----                                                                                                            
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\PROJECT_DEEP_ANALYSIS.txt                        
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\pl...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend\.github\java-upgrade\20260415135541\su...
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json                           
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\tools\generate-deep-analysis.ps1                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\tools\generate-deep-analysis.ps1                 
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\tools\generate-deep-analysis.ps1                 
+
+
+
+
+========================================================================================================================
+15) TEST FILES
+========================================================================================================================
+Detected Test Files: 0
+<none>
+
+========================================================================================================================
+16) ENV FILES (KEYS ONLY, REDACTED VALUES)
+========================================================================================================================
+<none>
+
+========================================================================================================================
+17) DIRECTORY TREE (TRIMMED)
+========================================================================================================================
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application
++-- .github
+|   \-- java-upgrade
+|       +-- hooks
+|       |   \-- scripts
+|       |       +-- recordToolUse.ps1
+|       |       \-- recordToolUse.sh
+|       \-- .gitignore
++-- backend
+|   +-- .github
+|   |   \-- java-upgrade
+|   |       +-- 20260415135541
+|   |       |   +-- logs
+|   |       |   |   \-- 0.log
+|   |       |   +-- plan.md
+|   |       |   +-- progress.md
+|   |       |   \-- summary.md
+|   |       \-- .gitignore
+|   +-- src
+|   |   \-- main
+|   |       +-- java
+|   |       |   \-- com
+|   |       |       \-- loandiscovery
+|   |       |           +-- config
+|   |       |           |   +-- DataSeeder.java
+|   |       |           |   \-- WebConfig.java
+|   |       |           +-- controller
+|   |       |           |   \-- BankController.java
+|   |       |           +-- dto
+|   |       |           |   \-- IfscResponse.java
+|   |       |           +-- exception
+|   |       |           |   \-- GlobalExceptionHandler.java
+|   |       |           +-- model
+|   |       |           |   \-- Branch.java
+|   |       |           +-- repository
+|   |       |           |   \-- BranchRepository.java
+|   |       |           +-- service
+|   |       |           |   \-- IfscService.java
+|   |       |           \-- LoanDiscoveryApplication.java
+|   |       \-- resources
+|   |           \-- application.properties
+|   +-- target
+|   |   +-- classes
+|   |   |   +-- com
+|   |   |   |   \-- loandiscovery
+|   |   |   |       +-- config
+|   |   |   |       |   +-- DataSeeder.class
+|   |   |   |       |   \-- WebConfig.class
+|   |   |   |       +-- controller
+|   |   |   |       |   \-- BankController.class
+|   |   |   |       +-- dto
+|   |   |   |       |   \-- IfscResponse.class
+|   |   |   |       +-- exception
+|   |   |   |       |   \-- GlobalExceptionHandler.class
+|   |   |   |       +-- model
+|   |   |   |       |   \-- Branch.class
+|   |   |   |       +-- repository
+|   |   |   |       |   \-- BranchRepository.class
+|   |   |   |       +-- service
+|   |   |   |       |   \-- IfscService.class
+|   |   |   |       \-- LoanDiscoveryApplication.class
+|   |   |   \-- application.properties
+|   |   +-- generated-sources
+|   |   |   \-- annotations
+|   |   +-- generated-test-sources
+|   |   |   \-- test-annotations
+|   |   +-- maven-status
+|   |   |   \-- maven-compiler-plugin
+|   |   |       \-- compile
+|   |   |           \-- default-compile
+|   |   |               +-- createdFiles.lst
+|   |   |               \-- inputFiles.lst
+|   |   \-- test-classes
+|   \-- pom.xml
++-- loan
+|   +-- public
+|   |   +-- favicon.svg
+|   |   \-- icons.svg
+|   +-- src
+|   |   +-- assets
+|   |   |   +-- hero.png
+|   |   |   +-- react.svg
+|   |   |   \-- vite.svg
+|   |   +-- components
+|   |   |   +-- 3d
+|   |   |   |   +-- EMIDonut3D.jsx
+|   |   |   |   +-- FinancialCore.jsx
+|   |   |   |   \-- ThemeParticles.jsx
+|   |   |   +-- sections
+|   |   |   |   +-- GlobeSection.jsx
+|   |   |   |   \-- ScrollMorphHero.jsx
+|   |   |   +-- ui
+|   |   |   |   +-- Alert.jsx
+|   |   |   |   +-- AnimatedButton.jsx
+|   |   |   |   +-- Badge.jsx
+|   |   |   |   +-- Button.jsx
+|   |   |   |   +-- Card.jsx
+|   |   |   |   +-- DataTable.jsx
+|   |   |   |   +-- EmptyState.jsx
+|   |   |   |   +-- FormField.jsx
+|   |   |   |   +-- Input.jsx
+|   |   |   |   +-- Label.jsx
+|   |   |   |   +-- LoadingState.jsx
+|   |   |   |   +-- Modal.jsx
+|   |   |   |   +-- PageContainer.jsx
+|   |   |   |   +-- PremiumCard.jsx
+|   |   |   |   +-- SectionHeader.jsx
+|   |   |   |   +-- Select.jsx
+|   |   |   |   +-- Spinner.jsx
+|   |   |   |   +-- StatCard.jsx
+|   |   |   |   \-- Tabs.jsx
+|   |   |   +-- Button.jsx
+|   |   |   +-- ComparisonTable.jsx
+|   |   |   +-- DashboardComponents.jsx
+|   |   |   +-- DashboardTabs.jsx
+|   |   |   +-- EligibilityResult.jsx
+|   |   |   +-- EMICalculator.jsx
+|   |   |   +-- Footer.jsx
+|   |   |   +-- FormWrapper.jsx
+|   |   |   +-- Hero3D.jsx
+|   |   |   +-- IfscLookup.jsx
+|   |   |   +-- InteractiveRateCard.jsx
+|   |   |   +-- InteractiveRatesSection.jsx
+|   |   |   +-- LoanCard.jsx
+|   |   |   +-- LoanForm.jsx
+|   |   |   +-- Navbar.jsx
+|   |   |   +-- RecommendationCard.jsx
+|   |   |   +-- ScrollMorphHero.jsx
+|   |   |   \-- ThemeToggle.jsx
+|   |   +-- context
+|   |   |   \-- ThemeContext.jsx
+|   |   +-- data
+|   |   |   +-- bankData.js
+|   |   |   \-- loanTypes.js
+|   |   +-- pages
+|   |   |   +-- Dashboard.jsx
+|   |   |   +-- LandingPage.jsx
+|   |   |   \-- LoginPage.jsx
+|   |   +-- utils
+|   |   |   +-- api.js
+|   |   |   +-- eligibility.js
+|   |   |   +-- emiCalculator.js
+|   |   |   +-- formatters.js
+|   |   |   \-- recommendations.js
+|   |   +-- App.jsx
+|   |   +-- index.css
+|   |   \-- main.jsx
+|   +-- .gitignore
+|   +-- eslint.config.js
+|   +-- index.html
+|   +-- package.json
+|   +-- package-lock.json
+|   +-- README.md
+|   +-- tailwind.config.js
+|   \-- vite.config.js
++-- tools
+|   \-- generate-deep-analysis.ps1
+\-- PROJECT_DEEP_ANALYSIS.txt
+
+========================================================================================================================
+18) HASHES (CRITICAL FILES)
+========================================================================================================================
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package-lock.json => B2990E1329BF67DC0B1E02725AEA1E98F3FF66201EEFAB6544BEE9A45A692B21
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\package.json => C75F5A8422DF3C9ACCD843F86AA3BA0D540F6D53092D9421A727FD00D03E0F8E
+C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\loan\README.md => A2648ADF2F4E92D188D79E14C2B26E207BB0654E90BEB5D99E7EB594D995FE65
+
+========================================================================================================================
+19) RISK FLAGS (HEURISTIC)
+========================================================================================================================
+Missing README.md
+Missing .gitignore
+No tests detected
+
+========================================================================================================================
+20) NEXT ACTIONS
+========================================================================================================================
+1) Trace each API call to owner component/service and document data contracts.
+2) Add schema validation at UI and backend boundaries.
+3) Increase unit/integration coverage for business-critical modules.
+4) Audit auth/session storage and token lifecycle.
+5) Add architecture and deployment documentation.

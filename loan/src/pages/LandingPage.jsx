@@ -43,7 +43,7 @@ export default function LandingPage() {
       <main className="flex-1 pb-10">
         <ScrollMorphHero />
 
-        <section className="py-16 sm:py-20">
+        <section className="pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20">
           <PageContainer>
             <SectionHeader
               eyebrow="How It Works"
@@ -53,7 +53,7 @@ export default function LandingPage() {
               className="mb-10"
             />
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="premium-grid grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
               {steps.map((step) => {
                 const Icon = step.icon;
                 return (
@@ -142,7 +142,7 @@ export default function LandingPage() {
 
         <section className="pb-16 sm:pb-20">
           <PageContainer>
-            <div className="overflow-hidden rounded-3xl border border-[var(--border-medium)] bg-[linear-gradient(140deg,#0f766e,#145980)] p-8 text-center shadow-[0_22px_48px_rgba(10,52,76,0.38)] sm:p-12">
+            <div className="overflow-hidden rounded-[1.9rem] border border-[var(--border-medium)] bg-[linear-gradient(140deg,#0f766e,#145980)] p-8 text-center shadow-[0_22px_48px_rgba(10,52,76,0.38)] sm:p-12">
               <h2 className="text-2xl font-semibold text-white sm:text-3xl">Ready to shortlist your next loan with confidence?</h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-white/85 sm:text-base">
                 Launch the dashboard to calculate EMIs, compare top banks, and act on personalized recommendations.

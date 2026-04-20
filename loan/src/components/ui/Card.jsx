@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 const Card = forwardRef(({ className = '', children, borderless = false, interactive = false, ...props }, ref) => (
   <div
     ref={ref}
-    className={`rounded-2xl transition-all duration-200 ${
-      !borderless ? 'border border-[var(--border-medium)] shadow-sm' : ''
-    } ${interactive ? 'hover:shadow-lg hover:border-[var(--accent)]' : ''} bg-[var(--bg-card)] ${className}`}
+    className={`rounded-[1.4rem] bg-[var(--bg-card)] transition-all duration-300 ${
+      !borderless ? 'border border-[var(--border-subtle)] shadow-[0_14px_34px_rgba(7,34,59,0.11)]' : ''
+    } ${interactive ? 'hover:-translate-y-1 hover:border-[var(--border-medium)] hover:shadow-[0_22px_46px_rgba(7,34,59,0.18)]' : ''} ${className}`}
     {...props}
   >
     {children}
@@ -15,7 +15,7 @@ const Card = forwardRef(({ className = '', children, borderless = false, interac
 Card.displayName = 'Card';
 
 const CardHeader = forwardRef(({ className = '', children, ...props }, ref) => (
-  <div ref={ref} className={`px-6 py-4 border-b border-[var(--border-subtle)] ${className}`} {...props}>
+  <div ref={ref} className={`border-b border-[var(--border-subtle)] px-6 py-5 ${className}`} {...props}>
     {children}
   </div>
 ));
@@ -31,7 +31,7 @@ const CardBody = forwardRef(({ className = '', children, ...props }, ref) => (
 CardBody.displayName = 'CardBody';
 
 const CardFooter = forwardRef(({ className = '', children, ...props }, ref) => (
-  <div ref={ref} className={`px-6 py-4 border-t border-[var(--border-subtle)] flex gap-3 ${className}`} {...props}>
+  <div ref={ref} className={`flex gap-3 border-t border-[var(--border-subtle)] px-6 py-4 ${className}`} {...props}>
     {children}
   </div>
 ));

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border-subtle)] bg-[var(--bg-card)]/85 backdrop-blur">
+    <footer className="border-t border-[var(--border-subtle)] bg-[color-mix(in_oklab,var(--bg-card)_88%,transparent)] backdrop-blur">
       <div className="mx-auto max-w-7xl px-6 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-2">
             <Landmark className="h-5 w-5 text-[var(--accent)]" />
             <span className="text-sm font-semibold text-[var(--text-primary)]">LoanSmart</span>

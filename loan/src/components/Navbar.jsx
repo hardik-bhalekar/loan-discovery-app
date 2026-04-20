@@ -1,22 +1,37 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Landmark, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 import PageContainer from './ui/PageContainer';
+import { clearAuthToken, getAuthUser, isAuthenticated } from '../utils/api';
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const authenticated = isAuthenticated();
+  const authUser = getAuthUser();
 
-  const links = [
-    { to: '/', label: 'Home' },
-    { to: '/dashboard', label: 'Dashboard' },
-    { to: '/login', label: 'Login' },
-  ];
+  const links = authenticated
+    ? [
+        { to: '/', label: 'Home' },
+        { to: '/dashboard', label: 'Dashboard' },
+      ]
+    : [
+        { to: '/', label: 'Home' },
+        { to: '/dashboard', label: 'Dashboard' },
+        { to: '/login', label: 'Login' },
+      ];
+
+  const handleLogout = () => {
+    clearAuthToken();
+    setOpen(false);
+    navigate('/login', { replace: true });
+  };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--border-subtle)] bg-[color-mix(in_oklab,var(--bg-card)_86%,transparent)] backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-[var(--border-subtle)] bg-[color-mix(in_oklab,var(--bg-card)_88%,transparent)] backdrop-blur-xl">
       <PageContainer>
         <div className="flex h-16 items-center justify-between">
           <motion.div
@@ -48,17 +63,17 @@ export default function Navbar() {
                   <Link
                     to={link.to}
                     className={[
-                      'rounded-lg px-3 py-2 text-sm font-semibold transition-all relative',
+                      'relative rounded-full px-3.5 py-2 text-sm font-semibold transition-all',
                       active
-                        ? 'text-[var(--accent)]'
-                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]',
+                        ? 'bg-[var(--bg-secondary)] text-[var(--accent)]'
+                        : 'text-[var(--text-muted)] hover:bg-[var(--bg-secondary)]/70 hover:text-[var(--text-primary)]',
                     ].join(' ')}
                   >
                     {link.label}
                     {active && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--accent)] rounded-full"
+                        className="absolute inset-x-3 bottom-1 h-0.5 rounded-full bg-[var(--accent)]"
                         transition={{ duration: 0.3 }}
                       />
                     )}
@@ -73,12 +88,21 @@ export default function Navbar() {
             >
               <ThemeToggle />
             </motion.div>
+            {authenticated ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-full border border-[var(--border-medium)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:bg-[var(--bg-secondary)]"
+              >
+                Logout{authUser?.name ? ` • ${authUser.name.split(' ')[0]}` : ''}
+              </button>
+            ) : null}
           </div>
 
           <motion.button
             type="button"
             onClick={() => setOpen((prev) => !prev)}
-            className="inline-flex rounded-lg p-2 text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] md:hidden"
+            className="inline-flex rounded-xl p-2 text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] md:hidden"
             aria-label="Toggle menu"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -104,7 +128,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="space-y-2 border-t border-[var(--border-subtle)] py-3 md:hidden overflow-hidden"
+              className="space-y-2 overflow-hidden border-t border-[var(--border-subtle)] py-3 md:hidden"
             >
               {links.map((link) => {
                 const active = location.pathname === link.to;
@@ -129,6 +153,15 @@ export default function Navbar() {
                   </motion.div>
                 );
               })}
+              {authenticated ? (
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="block w-full rounded-lg px-3 py-2 text-left text-sm font-semibold text-red-600 transition-all hover:bg-[var(--bg-secondary)]"
+                >
+                  Logout
+                </button>
+              ) : null}
               <ThemeToggle />
             </motion.div>
           )}

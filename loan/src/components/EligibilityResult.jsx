@@ -1,6 +1,7 @@
 import { CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { checkEligibility } from '../utils/eligibility';
 import { formatCurrency } from '../utils/emiCalculator';
+import PremiumCard from './ui/PremiumCard';
 
 export default function EligibilityResult({ profile }) {
   const results = checkEligibility(profile);
@@ -9,67 +10,71 @@ export default function EligibilityResult({ profile }) {
 
   return (
     <div className="space-y-6">
-      {/* Summary */}
-      <div className="bg-blue-600 rounded-xl p-5 text-white">
-        <h3 className="text-sm font-semibold mb-1">Eligibility Summary</h3>
-        <p className="text-sm text-blue-100">
-          You are eligible for <span className="font-bold text-white">{eligible.length}</span> out of{' '}
-          <span className="font-bold text-white">{results.length}</span> loan types.
+      <div className="luxury-panel rounded-[1.4rem] p-5">
+        <h3 className="text-base font-semibold text-[var(--text-primary)]">Eligibility Summary</h3>
+        <p className="mt-1 text-sm text-[var(--text-muted)]">
+          You are eligible for{' '}
+          <span className="text-base font-bold text-[var(--text-primary)]">{eligible.length}</span> out of{' '}
+          <span className="text-base font-bold text-[var(--text-primary)]">{results.length}</span> loan types.
         </p>
       </div>
 
-      {/* Eligible */}
       {eligible.length > 0 && (
         <div>
-          <h3 className="text-sm font-medium text-gray-500 mb-4 flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-500" /> Eligible For
+          <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--text-muted)]">
+            <CheckCircle className="h-4 w-4 text-emerald-500" /> Eligible For
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
             {eligible.map((item) => (
-              <div key={item.type} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-sm font-semibold text-gray-800">{item.type}</h4>
-                  <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded font-medium">
-                    <CheckCircle className="w-3 h-3" /> Eligible
+              <PremiumCard
+                key={item.type}
+                className="h-full p-5"
+              >
+                <div className="mb-3 flex items-start justify-between gap-3">
+                  <h4 className="text-base font-semibold text-[var(--text-primary)]">{item.type}</h4>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-500">
+                    <CheckCircle className="h-3.5 w-3.5" /> Eligible
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mb-4">{item.reason}</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">Max Amount</span>
-                    <div className="text-lg font-semibold text-gray-800">{formatCurrency(item.maxAmount)}</div>
+                <p className="mb-4 text-sm leading-6 text-[var(--text-muted)]">{item.reason}</p>
+
+                <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/55 p-3.5">
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--text-faint)]">Max Amount</span>
+                    <span className={`rounded-full border px-2 py-1 text-[10px] font-semibold ${
+                      item.confidence === 'High'
+                        ? 'border-emerald-400/40 bg-emerald-500/10 text-emerald-500'
+                        : item.confidence === 'Medium'
+                          ? 'border-amber-400/40 bg-amber-500/10 text-amber-500'
+                          : 'border-orange-400/40 bg-orange-500/10 text-orange-500'
+                    }`}>
+                      {item.confidence} Confidence
+                    </span>
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded font-medium ${
-                    item.confidence === 'High' ? 'bg-green-50 text-green-600 border border-green-100' :
-                    item.confidence === 'Medium' ? 'bg-amber-50 text-amber-600 border border-amber-100' :
-                    'bg-orange-50 text-orange-500 border border-orange-100'
-                  }`}>
-                    {item.confidence} Confidence
-                  </span>
+                  <div className="text-xl font-bold text-[var(--text-primary)]">{formatCurrency(item.maxAmount)}</div>
                 </div>
-              </div>
+              </PremiumCard>
             ))}
           </div>
         </div>
       )}
 
-      {/* Not Eligible */}
       {notEligible.length > 0 && (
         <div>
-          <h3 className="text-sm font-medium text-gray-500 mb-4 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-gray-400" /> Not Eligible
+          <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--text-muted)]">
+            <AlertCircle className="h-4 w-4 text-[var(--text-faint)]" /> Not Eligible
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
             {notEligible.map((item) => (
-              <div key={item.type} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 opacity-60">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-sm font-medium text-gray-500">{item.type}</h4>
-                  <span className="flex items-center gap-1 text-xs text-red-400 bg-red-50 px-2 py-0.5 rounded font-medium">
-                    <XCircle className="w-3 h-3" /> Not Eligible
+              <PremiumCard key={item.type} className="p-5 opacity-75" hover={false}>
+                <div className="mb-2 flex items-center justify-between">
+                  <h4 className="text-sm font-semibold text-[var(--text-muted)]">{item.type}</h4>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-rose-400/35 bg-rose-500/10 px-2 py-1 text-xs font-semibold text-rose-500">
+                    <XCircle className="h-3.5 w-3.5" /> Not Eligible
                   </span>
                 </div>
-                <p className="text-sm text-gray-400">{item.reason}</p>
-              </div>
+                <p className="text-sm text-[var(--text-faint)]">{item.reason}</p>
+              </PremiumCard>
             ))}
           </div>
         </div>

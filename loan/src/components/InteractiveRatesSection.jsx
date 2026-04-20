@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import InteractiveRateCard from './InteractiveRateCard';
+import PageContainer from './ui/PageContainer';
+import SectionHeader from './ui/SectionHeader';
 
 export default function InteractiveRatesSection() {
   const containerRef = useRef(null);
@@ -13,7 +15,7 @@ export default function InteractiveRatesSection() {
   ];
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)]">
+    <section className="relative overflow-hidden py-20">
       {/* Decorative Background */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <motion.div
@@ -28,26 +30,19 @@ export default function InteractiveRatesSection() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-            Compare Best Rates
-          </h2>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Real-time rates from top banks. Calculate your EMI and find the perfect loan.
-          </p>
-        </motion.div>
+      <PageContainer>
+        <SectionHeader
+          eyebrow="Live Rates"
+          title="Compare the best offers with a cleaner, more confident view"
+          description="Real-time rates from top banks, presented with tighter hierarchy and a premium comparison feel."
+          align="center"
+          className="mx-auto mb-14 max-w-3xl"
+        />
 
         {/* Cards Grid */}
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
         >
           {rates.map((rate, index) => (
             <motion.div
@@ -77,18 +72,18 @@ export default function InteractiveRatesSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <p className="text-[var(--text-secondary)] mb-6">
+          <p className="mb-6 text-sm text-[var(--text-muted)]">
             Rates updated every 10 minutes • Compare up to 20+ lenders
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-[var(--accent)] text-white font-semibold rounded-full hover:shadow-lg transition-all"
+            className="rounded-full bg-[var(--accent)] px-8 py-3 font-semibold text-white shadow-[0_16px_30px_rgba(15,118,110,0.24)] transition-all hover:bg-[var(--accent-strong)] hover:shadow-[0_20px_36px_rgba(15,118,110,0.32)]"
           >
             Compare All Rates →
           </motion.button>
         </motion.div>
-      </div>
+      </PageContainer>
     </section>
   );
 }

@@ -33,7 +33,7 @@ export default function EMICalculator({ initialAmount = 1000000, initialTenure =
   return (
     <div className="max-w-3xl space-y-6">
       {/* ── Sliders ──── */}
-      <div className="rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] p-6 shadow-sm">
+      <div className="luxury-panel rounded-[1.4rem] p-6">
         <h3 className="mb-6 text-sm font-semibold text-[var(--text-primary)]">Adjust Parameters</h3>
         <div className="space-y-6">
           <SliderInput icon={<IndianRupee />} label="Loan Amount" value={amount}
@@ -50,15 +50,15 @@ export default function EMICalculator({ initialAmount = 1000000, initialTenure =
 
       {/* ── Results ──── */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-xl bg-[var(--accent)] p-5 text-white">
+        <div className="rounded-[1.25rem] bg-[var(--accent)] p-5 text-white shadow-[0_18px_34px_rgba(15,118,110,0.24)]">
           <div className="mb-1 text-xs uppercase tracking-wider text-white/75">Monthly EMI</div>
           <div className="text-2xl font-semibold">{formatCurrency(result.emi)}</div>
         </div>
-        <div className="rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] p-5 shadow-sm">
+        <div className="rounded-[1.25rem] border border-[var(--border-medium)] bg-[var(--bg-card)] p-5 shadow-[0_12px_26px_rgba(7,34,59,0.08)]">
           <div className="mb-1 text-xs uppercase tracking-wider text-[var(--text-faint)]">Total Interest</div>
           <div className="text-xl font-semibold text-amber-500">{formatCurrency(result.totalInterest)}</div>
         </div>
-        <div className="rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] p-5 shadow-sm">
+        <div className="rounded-[1.25rem] border border-[var(--border-medium)] bg-[var(--bg-card)] p-5 shadow-[0_12px_26px_rgba(7,34,59,0.08)]">
           <div className="mb-1 text-xs uppercase tracking-wider text-[var(--text-faint)]">Total Payment</div>
           <div className="text-xl font-semibold text-[var(--text-primary)]">{formatCurrency(result.totalPayment)}</div>
         </div>
@@ -66,7 +66,7 @@ export default function EMICalculator({ initialAmount = 1000000, initialTenure =
 
       {/* ── Charts ──── */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div className="rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] p-6 shadow-sm">
+        <div className="luxury-panel rounded-[1.4rem] p-6">
           <h4 className="mb-4 text-sm font-semibold text-[var(--text-primary)]">Payment Breakdown</h4>
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
@@ -82,7 +82,7 @@ export default function EMICalculator({ initialAmount = 1000000, initialTenure =
           </div>
         </div>
 
-        <div className="rounded-xl border border-[var(--border-medium)] bg-[var(--bg-card)] p-6 shadow-sm">
+        <div className="luxury-panel rounded-[1.4rem] p-6">
           <h4 className="mb-4 text-sm font-semibold text-[var(--text-primary)]">Yearly Breakdown</h4>
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
@@ -110,7 +110,7 @@ function SliderInput({ icon, label, value, displayValue, min, max, step, onChang
           <span className="text-[var(--text-faint)] [&_svg]:h-4 [&_svg]:w-4">{icon}</span>
           {label}
         </label>
-        <span className="rounded-lg bg-[var(--bg-secondary)] px-3 py-1 text-sm font-semibold text-[var(--accent)]">
+        <span className="rounded-full bg-[var(--bg-secondary)] px-3 py-1 text-sm font-semibold text-[var(--accent)]">
           {displayValue}
         </span>
       </div>

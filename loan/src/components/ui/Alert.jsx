@@ -5,10 +5,10 @@ export default function Alert({ type = 'info', title, message, dismissible = tru
   const [isVisible, setIsVisible] = useState(true);
 
   const variants = {
-    info: { bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'border-blue-200 dark:border-blue-800', icon: InfoIcon, iconColor: 'text-blue-600 dark:text-blue-400' },
-    success: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', border: 'border-emerald-200 dark:border-emerald-800', icon: CheckCircle, iconColor: 'text-emerald-600 dark:text-emerald-400' },
-    warning: { bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', icon: AlertTriangle, iconColor: 'text-amber-600 dark:text-amber-400' },
-    error: { bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', icon: AlertCircle, iconColor: 'text-red-600 dark:text-red-400' },
+    info: { bg: 'bg-[color-mix(in_oklab,var(--bg-secondary)_62%,var(--bg-card)_38%)]', border: 'border-[var(--border-subtle)]', icon: InfoIcon, iconColor: 'text-sky-500' },
+    success: { bg: 'bg-[color-mix(in_oklab,rgba(16,185,129,0.12)_55%,var(--bg-card)_45%)]', border: 'border-emerald-400/30', icon: CheckCircle, iconColor: 'text-emerald-500' },
+    warning: { bg: 'bg-[color-mix(in_oklab,rgba(245,158,11,0.14)_55%,var(--bg-card)_45%)]', border: 'border-amber-400/30', icon: AlertTriangle, iconColor: 'text-amber-500' },
+    error: { bg: 'bg-[color-mix(in_oklab,rgba(239,68,68,0.10)_55%,var(--bg-card)_45%)]', border: 'border-rose-400/30', icon: AlertCircle, iconColor: 'text-rose-500' },
   };
 
   const variant = variants[type];
@@ -17,16 +17,16 @@ export default function Alert({ type = 'info', title, message, dismissible = tru
   if (!isVisible) return null;
 
   return (
-    <div className={`rounded-lg border ${variant.bg} ${variant.border} p-4 flex gap-3 ${className}`}>
+    <div className={`flex gap-3 rounded-[1.15rem] border px-4 py-3.5 shadow-[0_10px_24px_rgba(7,34,59,0.08)] ${variant.bg} ${variant.border} ${className}`}>
       <AlertIcon className={`h-5 w-5 flex-shrink-0 mt-0.5 ${variant.iconColor}`} />
       <div className="flex-1">
-        {title && <h4 className="font-semibold text-sm mb-1 text-[var(--text-primary)]">{title}</h4>}
-        <p className="text-sm text-[var(--text-primary)]">{message}</p>
+        {title && <h4 className="mb-1 text-sm font-semibold text-[var(--text-primary)]">{title}</h4>}
+        <p className="text-sm leading-relaxed text-[var(--text-muted)]">{message}</p>
       </div>
       {dismissible && (
         <button
           onClick={() => setIsVisible(false)}
-          className="text-[var(--text-faint)] hover:text-[var(--text-primary)] flex-shrink-0"
+          className="flex-shrink-0 text-[var(--text-faint)] transition-colors hover:text-[var(--text-primary)]"
         >
           <X className="h-4 w-4" />
         </button>
