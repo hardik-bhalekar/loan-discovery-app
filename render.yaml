@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: loan-discovery-backend
-    env: java
+    name: dhanpath-api
+    runtime: docker
     rootDir: backend
-    buildCommand: mvn -q -DskipTests package
-    startCommand: java -jar target/loan-discovery-backend-1.0.0.jar
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
     plan: free
     envVars:
       - key: DB_URL
