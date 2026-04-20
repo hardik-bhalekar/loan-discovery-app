@@ -1,5 +1,7 @@
 # Loan Discovery Backend
 
+The canonical project documentation now lives in [../README.md](../README.md). This file keeps the backend-specific run notes in one place.
+
 ## Local MySQL Run
 
 This backend is configured to use MySQL only. It does not include an H2 fallback.
