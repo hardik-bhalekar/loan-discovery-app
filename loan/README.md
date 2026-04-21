@@ -4,6 +4,9 @@ The canonical project documentation now lives in [../README.md](../README.md). T
 
 Loan Discovery is a full-stack loan discovery and comparison app. The frontend is a React/Vite experience with a premium fintech UI, while the backend is a Spring Boot 3.2.5 API with MySQL, Spring Security, JWT, and JPA persistence.
 
+Production frontend: `https://loan-discovery-app.vercel.app/`
+Production backend API base: `https://loan-discovery-app.onrender.com/api`
+
 ## What This App Does
 
 - Lets users register and log in with JWT authentication.
@@ -102,6 +105,8 @@ Legacy `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` are still accepted for local b
 - `VITE_API_BASE_URL` - backend API base URL. Default: `http://localhost:8080/api`.
 - `VITE_ADMIN_EMAIL` - admin email used to reveal the admin tab in the UI. Default: `admin@loandiscovery.local`.
 
+For Vercel production, set `VITE_API_BASE_URL=https://loan-discovery-app.onrender.com/api`.
+
 ## Local Setup
 
 ### Backend
@@ -139,12 +144,15 @@ To verify the production bundle:
 npm run build
 ```
 
+For Vercel, set the project root directory to `loan`.
+
 ## Important Notes
 
 - The backend is MySQL-only. Do not switch it to H2.
 - The dashboard is protected client-side and redirects to `/login` when the session is missing.
 - Admin UI visibility is controlled by the admin email in the frontend environment.
 - Auth tokens and user info are persisted in browser storage.
+- [vercel.json](vercel.json) provides the SPA rewrite so direct visits to `/login`, `/signup`, and `/dashboard` work on Vercel.
 
 ## Verified Locally
 

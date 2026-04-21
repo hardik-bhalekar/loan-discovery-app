@@ -73,6 +73,8 @@ Loan-Discovery-Web-Application/
 
 The frontend lives in [loan/](loan/) and is built as a premium dashboard-style web app.
 
+Production frontend: `https://loan-discovery-app.vercel.app/`
+
 ### Main Routes
 
 - `/` - marketing and landing page
@@ -91,6 +93,8 @@ The frontend lives in [loan/](loan/) and is built as a premium dashboard-style w
 ## Backend Application
 
 The backend lives in [backend/](backend/) and exposes the APIs consumed by the frontend.
+
+Production backend: `https://loan-discovery-app.onrender.com`
 
 ### Backend Capabilities
 
@@ -174,6 +178,8 @@ Legacy `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` are still accepted for local b
 | --- | --- | --- | --- |
 | `VITE_API_BASE_URL` | No | Backend API base URL | `http://localhost:8080/api` |
 | `VITE_ADMIN_EMAIL` | No | Email used to reveal admin UI | `hardik.bhalekar10@gmail.com` |
+
+For production on Vercel, set `VITE_API_BASE_URL` to `https://loan-discovery-app.onrender.com/api`.
 
 ## Local Development
 
@@ -259,6 +265,26 @@ The Render blueprint uses:
 
 The app now listens on Render’s `PORT` automatically, so no extra port override is needed.
 
+Current production backend URL: `https://loan-discovery-app.onrender.com`
+
+## Vercel Deployment
+
+The frontend can be deployed to [Vercel](https://vercel.com/) with the project root set to [loan/](loan/).
+
+### What Vercel Needs
+
+- Root directory set to `loan`
+- `VITE_API_BASE_URL=https://loan-discovery-app.onrender.com/api`
+- `VITE_ADMIN_EMAIL` if you want to override the default admin email
+
+### SPA Routing
+
+This repository includes [loan/vercel.json](loan/vercel.json) so React Router routes such as `/login`, `/signup`, and `/dashboard` rewrite to `index.html` instead of returning a Vercel `404: NOT_FOUND` page.
+
+### Current Production Frontend
+
+`https://loan-discovery-app.vercel.app/`
+
 ## Verification Status
 
 The following checks have been validated locally during development:
@@ -288,8 +314,10 @@ The current implementation roadmap for the app is:
 ## Troubleshooting
 
 - If the backend fails to start with a MySQL access denied error, confirm the username and password in `SPRING_DATASOURCE_USERNAME` and `SPRING_DATASOURCE_PASSWORD`.
+- If Render fails with `UnknownHostException`, re-check the hostname inside `SPRING_DATASOURCE_URL`.
 - If startup fails with `Port 8080 was already in use`, stop the existing Java process on `8080` or run with `PORT=8081`.
 - If the frontend cannot reach the API, confirm `VITE_API_BASE_URL` points to the running backend.
+- If Vercel shows `404: NOT_FOUND` on `/login`, `/signup`, or `/dashboard`, confirm [loan/vercel.json](loan/vercel.json) is deployed and the Vercel project root is `loan`.
 - If protected pages bounce back to login, clear browser storage and sign in again.
 - If the admin experience is missing, verify the configured admin email in both backend and frontend environments.
 

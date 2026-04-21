@@ -59,6 +59,9 @@ Set-Location 'C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\bac
 
 Render can run this backend as a Java web service using [../render.yaml](../render.yaml).
 
+Production backend URL: `https://loan-discovery-app.onrender.com`
+Production frontend URL: `https://loan-discovery-app.vercel.app/`
+
 Use these environment variables in Render:
 
 - `SPRING_DATASOURCE_URL`
@@ -71,3 +74,4 @@ Use these environment variables in Render:
 
 The backend listens on Render’s `PORT` automatically through `backend/src/main/resources/application.properties`.
 Render does not read `backend/.env`, so copy the real values into the Render service environment settings.
+For the current production setup, include `https://loan-discovery-app.vercel.app` in `APP_CORS_ALLOWED_ORIGINS`.
