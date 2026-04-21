@@ -155,12 +155,14 @@ The backend lives in [backend/](backend/) and exposes the APIs consumed by the f
 
 | Variable | Required | Description | Example |
 | --- | --- | --- | --- |
-| `DB_URL` | Yes | MySQL JDBC connection string | `jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC` |
-| `DB_USERNAME` | Yes | MySQL username | `root` |
-| `DB_PASSWORD` | Yes | MySQL password | `your-password` |
+| `SPRING_DATASOURCE_URL` | Yes | MySQL JDBC connection string | `jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC` |
+| `SPRING_DATASOURCE_USERNAME` | Yes | MySQL username | `root` |
+| `SPRING_DATASOURCE_PASSWORD` | Yes | MySQL password | `your-password` |
 | `JWT_SECRET` | Yes | Secret used to sign JWTs | `replace-with-a-long-random-secret` |
 | `JWT_EXPIRATION_MS` | No | Token lifetime in milliseconds | `86400000` |
 | `ADMIN_EMAIL` | No | Email used to identify admin access | `hardik.bhalekar10@gmail.com` |
+
+Legacy `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` are still accepted for local backward compatibility.
 
 ### Frontend
 
@@ -176,12 +178,19 @@ The backend lives in [backend/](backend/) and exposes the APIs consumed by the f
 Open a PowerShell terminal in [backend/](backend/) and set the environment variables first.
 
 ```powershell
-$env:DB_URL="jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
-$env:DB_USERNAME="root"
-$env:DB_PASSWORD="your-mysql-password"
+$env:SPRING_DATASOURCE_URL="jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+$env:SPRING_DATASOURCE_USERNAME="root"
+$env:SPRING_DATASOURCE_PASSWORD="your-mysql-password"
 $env:JWT_SECRET="replace-with-a-long-random-secret"
 $env:ADMIN_EMAIL="hardik.bhalekar10@gmail.com"
 Set-Location 'C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\backend'
+.\mvnw.cmd spring-boot:run
+```
+
+If port `8080` is already in use, run the backend on another port in that same terminal:
+
+```powershell
+$env:PORT="8081"
 .\mvnw.cmd spring-boot:run
 ```
 
@@ -225,9 +234,9 @@ This repository includes [render.yaml](render.yaml) for the backend service.
 
 Set these in the Render service:
 
-- `DB_URL`
-- `DB_USERNAME`
-- `DB_PASSWORD`
+- `SPRING_DATASOURCE_URL`
+- `SPRING_DATASOURCE_USERNAME`
+- `SPRING_DATASOURCE_PASSWORD`
 - `JWT_SECRET`
 - `JWT_EXPIRATION_MS` if you want a custom token lifetime
 - `ADMIN_EMAIL`
@@ -237,8 +246,8 @@ Set these in the Render service:
 
 The Render blueprint uses:
 
-- Build: `mvn -q -DskipTests package`
-- Start: `java -jar target/loan-discovery-backend-1.0.0.jar`
+- Build: `chmod +x mvnw && ./mvnw clean package -DskipTests`
+- Start: `java -jar target/*.jar`
 
 ### Important Note
 
@@ -253,7 +262,7 @@ The following checks have been validated locally during development:
 
 ## Development Notes
 
-- Keep `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` aligned with your local MySQL instance.
+- Keep `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD` aligned with your local MySQL instance.
 - Keep `VITE_API_BASE_URL` pointed at the backend when running the frontend locally.
 - The dashboard is protected in the UI and redirects to login when the session is missing.
 - Auth tokens and user data are stored in browser storage.
@@ -272,7 +281,8 @@ The current implementation roadmap for the app is:
 
 ## Troubleshooting
 
-- If the backend fails to start with a MySQL access denied error, confirm the username and password in `DB_USERNAME` and `DB_PASSWORD`.
+- If the backend fails to start with a MySQL access denied error, confirm the username and password in `SPRING_DATASOURCE_USERNAME` and `SPRING_DATASOURCE_PASSWORD`.
+- If startup fails with `Port 8080 was already in use`, stop the existing Java process on `8080` or run with `PORT=8081`.
 - If the frontend cannot reach the API, confirm `VITE_API_BASE_URL` points to the running backend.
 - If protected pages bounce back to login, clear browser storage and sign in again.
 - If the admin experience is missing, verify the configured admin email in both backend and frontend environments.

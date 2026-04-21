@@ -88,12 +88,14 @@ Loan Discovery is a full-stack loan discovery and comparison app. The frontend i
 
 ### Backend
 
-- `DB_URL` - MySQL JDBC URL. Default: `jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`.
-- `DB_USERNAME` - MySQL username.
-- `DB_PASSWORD` - MySQL password.
+- `SPRING_DATASOURCE_URL` - MySQL JDBC URL. Default: `jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`.
+- `SPRING_DATASOURCE_USERNAME` - MySQL username.
+- `SPRING_DATASOURCE_PASSWORD` - MySQL password.
 - `JWT_SECRET` - JWT signing secret.
 - `JWT_EXPIRATION_MS` - token lifetime in milliseconds. Default: `86400000`.
 - `ADMIN_EMAIL` - backend admin email. Default: `admin@loandiscovery.local`.
+
+Legacy `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` are still accepted for local backward compatibility.
 
 ### Frontend
 
@@ -107,11 +109,18 @@ Loan Discovery is a full-stack loan discovery and comparison app. The frontend i
 Open a PowerShell terminal in [backend/](backend/) and set the environment variables before starting Spring Boot.
 
 ```powershell
-$env:DB_URL="jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
-$env:DB_USERNAME="<your-mysql-user>"
-$env:DB_PASSWORD="<your-mysql-password>"
+$env:SPRING_DATASOURCE_URL="jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+$env:SPRING_DATASOURCE_USERNAME="<your-mysql-user>"
+$env:SPRING_DATASOURCE_PASSWORD="<your-mysql-password>"
 $env:JWT_SECRET="<long-random-secret>"
 $env:ADMIN_EMAIL="hardik.bhalekar10@gmail.com"
+.\mvnw.cmd spring-boot:run
+```
+
+If port `8080` is already in use, set `PORT` before running:
+
+```powershell
+$env:PORT="8081"
 .\mvnw.cmd spring-boot:run
 ```
 
@@ -144,7 +153,7 @@ npm run build
 
 ## Development Tips
 
-- Keep `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` aligned with the local MySQL instance.
+- Keep `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD` aligned with the local MySQL instance.
 - Keep `VITE_API_BASE_URL` pointed at the backend API when running the frontend locally.
 - If protected routes bounce back to login, clear browser storage and sign in again.
 - If the admin tab does not appear, confirm the authenticated user email matches `VITE_ADMIN_EMAIL`.

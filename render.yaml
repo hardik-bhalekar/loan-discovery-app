@@ -1,17 +1,17 @@
 services:
   - type: web
     name: dhanpath-api
-    runtime: docker
+    runtime: java
     rootDir: backend
     buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
     plan: free
     envVars:
-      - key: DB_URL
+      - key: SPRING_DATASOURCE_URL
         sync: false
-      - key: DB_USERNAME
+      - key: SPRING_DATASOURCE_USERNAME
         sync: false
-      - key: DB_PASSWORD
+      - key: SPRING_DATASOURCE_PASSWORD
         sync: false
       - key: JWT_SECRET
         sync: false
@@ -20,4 +20,4 @@ services:
       - key: ADMIN_EMAIL
         sync: false
       - key: APP_CORS_ALLOWED_ORIGINS
-        sync: false
+        value: "https://loan-discovery-app.vercel.app,http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
