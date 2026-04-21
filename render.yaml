@@ -1,7 +1,7 @@
 services:
   - type: web
     name: dhanpath-api
-    runtime: java
+    env: java
     rootDir: backend
     buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
