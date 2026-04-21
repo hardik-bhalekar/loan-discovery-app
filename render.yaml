@@ -1,10 +1,8 @@
 services:
   - type: web
     name: dhanpath-api
-    env: java
+    env: docker
     rootDir: backend
-    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
-    startCommand: java -jar target/*.jar
     plan: free
     envVars:
       - key: SPRING_DATASOURCE_URL
