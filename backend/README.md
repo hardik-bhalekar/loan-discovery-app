@@ -6,7 +6,7 @@ The canonical project documentation now lives in [../README.md](../README.md). T
 
 This backend is configured to use MySQL only. It does not include an H2 fallback.
 
-Before starting the app, set these environment variables in the same PowerShell session:
+Before starting the app, either fill in `backend/.env` or set these environment variables in the same PowerShell session:
 
 - `SPRING_DATASOURCE_URL` - example: `jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`
 - `SPRING_DATASOURCE_USERNAME` - your MySQL user, for example `root`
@@ -46,7 +46,7 @@ Get-NetTCPConnection -LocalPort 8080 -State Listen | Select-Object LocalAddress,
 Stop-Process -Id 12345 -Force
 ```
 
-If you want to keep the values outside the terminal, create a PowerShell profile or a private `.env` loading step in your editor/terminal setup. Do not commit real credentials.
+This project now supports a local `backend/.env` file automatically through Spring config import. Keep real credentials only in that private file and out of git.
 
 ## Build Check
 
@@ -70,3 +70,4 @@ Use these environment variables in Render:
 - `APP_CORS_ALLOWED_ORIGINS`
 
 The backend listens on Render’s `PORT` automatically through `backend/src/main/resources/application.properties`.
+Render does not read `backend/.env`, so copy the real values into the Render service environment settings.

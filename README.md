@@ -151,6 +151,10 @@ The backend lives in [backend/](backend/) and exposes the APIs consumed by the f
 
 ## Environment Variables
 
+Tracked templates are included at [backend/.env.example](backend/.env.example) and [loan/.env.example](loan/.env.example).
+
+For local development, private `.env` files are also supported at `backend/.env` and `loan/.env`. These files are git-ignored and should contain your real secrets and local URLs.
+
 ### Backend
 
 | Variable | Required | Description | Example |
@@ -175,7 +179,7 @@ Legacy `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` are still accepted for local b
 
 ### 1. Start the backend
 
-Open a PowerShell terminal in [backend/](backend/) and set the environment variables first.
+Open a PowerShell terminal in [backend/](backend/). You can either fill in [backend/.env](backend/.env) or set the variables manually in the terminal.
 
 ```powershell
 $env:SPRING_DATASOURCE_URL="jdbc:mysql://localhost:3306/loan_discovery?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
@@ -203,7 +207,7 @@ Set-Location 'C:\Users\ASUS\Documents\Backend\Loan-Discovery-Web-Application\bac
 
 ### 2. Start the frontend
 
-Open a separate terminal in [loan/](loan/):
+Open a separate terminal in [loan/](loan/). Fill in [loan/.env](loan/.env) if you want to override the default local API URL or admin email, then run:
 
 ```bash
 npm install
@@ -241,6 +245,8 @@ Set these in the Render service:
 - `JWT_EXPIRATION_MS` if you want a custom token lifetime
 - `ADMIN_EMAIL`
 - `APP_CORS_ALLOWED_ORIGINS` with your frontend URL, for example `https://your-frontend.onrender.com`
+
+Render does not load the repository `.env` files automatically. Copy the real values from your private local `.env` files into the Render dashboard or blueprint environment settings.
 
 ### Build And Start Commands
 
