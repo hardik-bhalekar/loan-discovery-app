@@ -48,7 +48,8 @@ public class KycService {
         otpRepository.save(record);
         
         // Mock sending SMS
-        log.info("MOCK SMS: OTP for {} is {}", phone, otp);
+        String maskedOtp = otp.replaceAll(".(?=.{2})", "*");
+        log.info("MOCK SMS: OTP for {} is {}", phone, maskedOtp);
     }
 
     @Transactional
@@ -82,7 +83,7 @@ public class KycService {
         User user = currentUserService.getCurrentUserEntity();
         
         // Mock PAN verification with 3rd party provider
-        log.info("Verifying PAN {} for user {}", panNumber, user.getId());
+        log.info("Verifying PAN status for user {}", user.getId());
         
         // Assume valid for stub
         boolean isValid = panNumber.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}");

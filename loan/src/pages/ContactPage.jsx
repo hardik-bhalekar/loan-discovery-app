@@ -76,7 +76,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[var(--text-muted)]">Office</p>
-                    <p className="text-lg font-bold text-[var(--text-primary)]">Mumbai, Maharashtra, India</p>
+                    <p className="text-lg font-bold text-[var(--text-primary)]">Pune, Maharashtra, India</p>
                   </div>
                 </div>
               </div>
