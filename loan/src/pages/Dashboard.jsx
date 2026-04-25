@@ -11,6 +11,7 @@
     Menu,
     X,
     Building2,
+    FileSpreadsheet,
   } from 'lucide-react';
   import { Link, useNavigate } from 'react-router-dom';
   import ProfileForm from '../components/ProfileForm';
@@ -23,6 +24,9 @@
   import ThemeToggle from '../components/ThemeToggle';
   import PremiumCard from '../components/ui/PremiumCard';
   import EmptyState from '../components/ui/EmptyState';
+  import LoanIntelligenceCard from '../components/LoanIntelligenceCard';
+  import StatementUpload from '../components/StatementUpload';
+  import ComplianceHub from '../components/ComplianceHub';
   import {
     clearAuthToken,
     getAuthUser,
@@ -44,7 +48,9 @@
     { id: 'emi', label: 'EMI Calculator', icon: Calculator },
     { id: 'compare', label: 'Comparison', icon: GitCompare },
     { id: 'recommend', label: 'Top Picks', icon: Award },
+    { id: 'statements', label: 'Bank Statements', icon: FileSpreadsheet },
     { id: 'ifsc', label: 'IFSC Lookup', icon: Building2 },
+    { id: 'compliance', label: 'Data & Rights', icon: ShieldCheck },
   ];
 
   const defaultProfile = {
@@ -97,6 +103,7 @@
       name: response.name ?? baseProfile.name,
       email: response.email ?? baseProfile.email,
       mobile: response.phone ?? baseProfile.mobile,
+      kycVerified: response.kycVerified ?? false,
       age: response.personal?.age ?? baseProfile.age,
       gender: response.personal?.gender ?? baseProfile.gender,
       city: response.personal?.city ?? baseProfile.city,
@@ -301,7 +308,12 @@
         case 'loan-profile':
           return <LoanForm initialProfile={profile} onSubmit={handleLoanProfileSubmit} />;
         case 'eligibility':
-          return <EligibilityResult profile={profile} />;
+          return (
+            <div className="space-y-6">
+              <EligibilityResult profile={profile} />
+              <LoanIntelligenceCard profile={profile} />
+            </div>
+          );
         case 'emi':
           return <EMICalculator initialAmount={profile.loanAmount} initialTenure={profile.tenure} />;
         case 'compare':
@@ -418,8 +430,12 @@
           ) : (
             <EmptyState title="No recommendations yet" description="Update profile details and try again." />
           );
+        case 'statements':
+          return <StatementUpload />;
         case 'ifsc':
           return <IfscLookup />;
+        case 'compliance':
+          return <ComplianceHub />;
         case 'admin':
           return isAdmin ? (
             <div className="space-y-5">
@@ -537,15 +553,28 @@
           </nav>
 
           <div className="border-t border-[var(--border-subtle)] p-4">
-            <div className="flex items-center justify-between rounded-xl bg-[var(--bg-secondary)] p-3">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-xs font-semibold text-[var(--accent)]">U</div>
-                <div>
-                  <p className="text-xs font-semibold text-[var(--text-primary)]">{authUser?.name || 'User'}</p>
-                  <p className="text-[10px] text-[var(--text-faint)]">{authUser?.email || 'Authenticated session'}</p>
+            <div className="flex items-center justify-between rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-3 transition-colors hover:border-[var(--border-medium)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-strong)] text-sm font-bold text-white shadow-sm">
+                  {authUser?.name?.charAt(0)?.toUpperCase() || 'U'}
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm font-bold text-[var(--text-primary)]">{authUser?.name || 'User'}</p>
+                    {profile.kycVerified && (
+                      <ShieldCheck className="h-4 w-4 text-emerald-500" title="KYC Verified" />
+                    )}
+                  </div>
+                  <p className="max-w-[120px] truncate text-xs text-[var(--text-faint)]">{authUser?.email || 'Authenticated session'}</p>
                 </div>
               </div>
-              <button type="button" onClick={handleLogout} className="text-[var(--text-faint)] transition-colors hover:text-red-500" title="Logout">
+              <button 
+                type="button" 
+                onClick={handleLogout} 
+                className="rounded-lg p-2 text-[var(--text-faint)] transition-colors hover:bg-red-500/10 hover:text-red-500" 
+                title="Logout"
+                aria-label="Logout"
+              >
                 <LogOut className="h-4 w-4" />
               </button>
             </div>
@@ -610,23 +639,28 @@
               </div>
             ) : null}
 
-            <PremiumCard className="mb-5 flex flex-wrap items-center justify-between gap-3 px-5 py-4 sm:px-6 sm:py-4" hover={false}>
+            <PremiumCard className="mb-8 flex flex-wrap items-center justify-between gap-4 px-6 py-5" hover={false}>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--text-faint)]">Dashboard</p>
-                <h1 className="mt-1 text-xl font-bold tracking-tight text-[var(--text-primary)] sm:text-2xl">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">Dashboard</p>
+                <h1 className="mt-1 text-2xl font-black tracking-tight text-[var(--text-primary)] sm:text-3xl">
                   {visibleTabs.find((item) => item.id === activeTab)?.label}
                 </h1>
               </div>
-              <p className="text-sm font-medium text-[var(--text-muted)]">
-                <span className="text-[var(--text-faint)]">Profile:</span>{' '}
-                <span className="font-semibold text-[var(--text-primary)]">{formatCompactINR(profile.loanAmount)}</span>{' '}
-                <span className="text-[var(--text-faint)]">•</span> {profile.tenure} years{' '}
-                <span className="text-[var(--text-faint)]">•</span> Credit{' '}
-                <span className="font-semibold text-[var(--text-primary)]">{profile.creditScore}</span>
-              </p>
+              <div className="flex flex-col items-end gap-1 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-2">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-faint)]">Active Profile</p>
+                <p className="text-sm font-semibold text-[var(--text-primary)]">
+                  {formatCompactINR(profile.loanAmount)}{' '}
+                  <span className="mx-1 font-normal text-[var(--text-faint)]">/</span>{' '}
+                  {profile.tenure} yr{' '}
+                  <span className="mx-1 font-normal text-[var(--text-faint)]">/</span>{' '}
+                  <span className="text-[var(--accent)]">Score {profile.creditScore}</span>
+                </p>
+              </div>
             </PremiumCard>
 
-            {renderContent()}
+            <div key={activeTab} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              {renderContent()}
+            </div>
           </main>
         </div>
       </div>

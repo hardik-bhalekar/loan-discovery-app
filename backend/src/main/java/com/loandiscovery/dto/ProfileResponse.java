@@ -8,6 +8,7 @@ public class ProfileResponse {
     private final String name;
     private final String email;
     private final String phone;
+    private final boolean kycVerified;
     private final PersonalProfileData personal;
     private final LoanProfileData loan;
 
@@ -16,6 +17,7 @@ public class ProfileResponse {
         this.name = user.getName();
         this.email = user.getEmail();
         this.phone = user.getPhone();
+        this.kycVerified = user.isKycVerified();
         this.personal = personal;
         this.loan = loan;
     }
@@ -34,6 +36,10 @@ public class ProfileResponse {
 
     public String getPhone() {
         return phone;
+    }
+
+    public boolean isKycVerified() {
+        return kycVerified;
     }
 
     public PersonalProfileData getPersonal() {

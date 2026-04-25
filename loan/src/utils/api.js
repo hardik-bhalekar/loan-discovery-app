@@ -244,3 +244,22 @@ export async function getGlobalMarketHotspots(params = {}) {
 
   return apiFetch(`/global-market/hotspots${query.toString() ? `?${query.toString()}` : ''}`);
 }
+
+export async function getConsentHistory() {
+  return apiFetch('/consent', { method: 'GET' }, true);
+}
+
+export async function recordConsent(consentType) {
+  return apiFetch('/consent', {
+    method: 'POST',
+    body: JSON.stringify({ consentType }),
+  }, true);
+}
+
+export async function exportAccountData() {
+  return apiFetch('/account/data', { method: 'GET' }, true);
+}
+
+export async function deleteAccountData() {
+  return apiFetch('/account/data', { method: 'DELETE' }, true);
+}
