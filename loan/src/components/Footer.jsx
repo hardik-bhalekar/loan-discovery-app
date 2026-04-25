@@ -13,7 +13,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             {['About', 'Privacy', 'Contact'].map((item) => (
-              <Link key={item} to="/" className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
+              <Link key={item} to={`/${item.toLowerCase()}`} className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
                 {item}
               </Link>
             ))}
