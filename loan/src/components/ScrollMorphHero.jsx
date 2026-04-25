@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ScrollMorphHero() {
   const containerRef = useRef(null);
@@ -68,24 +69,28 @@ export default function ScrollMorphHero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex items-center justify-center gap-4 sm:flex-row"
           >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-4 font-semibold text-white shadow-[0_18px_34px_rgba(15,118,110,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-strong)] hover:shadow-[0_22px_40px_rgba(15,118,110,0.34)]"
-            >
-              Get Started
-              <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                →
-              </motion.span>
-            </motion.button>
+            <Link to="/dashboard">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-4 font-semibold text-white shadow-[0_18px_34px_rgba(15,118,110,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-strong)] hover:shadow-[0_22px_40px_rgba(15,118,110,0.34)]"
+              >
+                Get Started
+                <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  →
+                </motion.span>
+              </motion.button>
+            </Link>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="rounded-full border border-[var(--border-medium)] px-8 py-4 font-semibold text-[var(--text-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--bg-secondary)]"
-            >
-              Learn More
-            </motion.button>
+            <Link to="/login">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="rounded-full border border-[var(--border-medium)] px-8 py-4 font-semibold text-[var(--text-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--bg-secondary)]"
+              >
+                Secure Login
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Stats Section */}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import InteractiveRateCard from './InteractiveRateCard';
 import PageContainer from './ui/PageContainer';
 import SectionHeader from './ui/SectionHeader';
@@ -75,13 +76,15 @@ export default function InteractiveRatesSection() {
           <p className="mb-6 text-sm text-[var(--text-muted)]">
             Rates updated every 10 minutes • Compare up to 20+ lenders
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-full bg-[var(--accent)] px-8 py-3 font-semibold text-white shadow-[0_16px_30px_rgba(15,118,110,0.24)] transition-all hover:bg-[var(--accent-strong)] hover:shadow-[0_20px_36px_rgba(15,118,110,0.32)]"
-          >
-            Compare All Rates →
-          </motion.button>
+          <Link to="/dashboard">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="rounded-full bg-[var(--accent)] px-8 py-3 font-semibold text-white shadow-[0_16px_30px_rgba(15,118,110,0.24)] transition-all hover:bg-[var(--accent-strong)] hover:shadow-[0_20px_36px_rgba(15,118,110,0.32)]"
+            >
+              Compare All Rates →
+            </motion.button>
+          </Link>
         </motion.div>
       </PageContainer>
     </section>
