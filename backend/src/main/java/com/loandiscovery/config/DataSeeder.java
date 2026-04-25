@@ -1,9 +1,12 @@
 package com.loandiscovery.config;
 
+import com.loandiscovery.model.User;
+import com.loandiscovery.repository.UserRepository;
 import com.loandiscovery.service.IfscService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +17,8 @@ public class DataSeeder implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DataSeeder.class);
 
     private final IfscService ifscService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // One representative IFSC per top bank for initial cache seeding
     private static final List<String> SEED_IFSCS = List.of(
@@ -29,8 +34,10 @@ public class DataSeeder implements CommandLineRunner {
             "AUBL0002001"   // AU Small Finance Bank
     );
 
-    public DataSeeder(IfscService ifscService) {
+    public DataSeeder(IfscService ifscService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.ifscService = ifscService;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -47,5 +54,34 @@ public class DataSeeder implements CommandLineRunner {
             }
         }
         log.info("🏦 Seeding complete: {}/{} banks cached", success, SEED_IFSCS.size());
+
+        seedFakeUsers();
     }
+
+    private void seedFakeUsers() {
+        log.info("👤 Seeding fake users...");
+        List<UserTemplate> testUsers = List.of(
+            new UserTemplate("John Doe", "john@example.com", "9876543210", "password123"),
+            new UserTemplate("Jane Smith", "jane@example.com", "9876543211", "password123"),
+            new UserTemplate("Test User", "test@example.com", "9876543212", "password123")
+        );
+
+        for (UserTemplate template : testUsers) {
+            if (userRepository.findByEmail(template.email).isEmpty()) {
+                User user = new User();
+                user.setName(template.name);
+                user.setEmail(template.email);
+                user.setPhone(template.phone);
+                user.setPasswordHash(passwordEncoder.encode(template.password));
+                user.setKycVerified(true);
+                user.setPanNumber("ABCDE1234F"); // Fake PAN
+                userRepository.save(user);
+                log.info("  ✓ Created user: {}", template.email);
+            } else {
+                log.info("  - User already exists: {}", template.email);
+            }
+        }
+    }
+
+    private record UserTemplate(String name, String email, String phone, String password) {}
 }
