@@ -13,11 +13,11 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             {['About', 'Privacy', 'Contact'].map((item) => (
-              <span key={item} className="cursor-pointer text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
+              <Link key={item} to="/" className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
                 {item}
-              </span>
+              </Link>
             ))}
-            <a href="#" className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
+            <a href="https://github.com/hardik-bhalekar/loan-discovery-app" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]">
               GitHub
             </a>
           </div>

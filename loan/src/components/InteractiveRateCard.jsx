@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { TrendingDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Card, CardBody } from './ui/Card';
 
 export default function InteractiveRateCard({ bank, rate, tenure, loanAmount, emi, trending, featured = false }) {
@@ -59,17 +60,19 @@ export default function InteractiveRateCard({ bank, rate, tenure, loanAmount, em
             </div>
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`w-full mt-6 py-2.5 rounded-lg font-semibold text-sm transition-all ${
-              featured
-                ? 'bg-[var(--accent)] text-white hover:shadow-lg'
-                : 'border border-[var(--border-medium)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
-            }`}
-          >
-            {featured ? 'Apply Now' : 'View Details'}
-          </motion.button>
+          <Link to="/dashboard" className="block w-full mt-6">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                featured
+                  ? 'bg-[var(--accent)] text-white hover:shadow-lg'
+                  : 'border border-[var(--border-medium)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
+              }`}
+            >
+              {featured ? 'Apply Now' : 'View Details'}
+            </motion.button>
+          </Link>
         </CardBody>
       </Card>
     </motion.div>
