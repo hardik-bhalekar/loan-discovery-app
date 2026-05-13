@@ -29,10 +29,7 @@
     getAuthUser,
     getAdminStats,
     getMyProfile,
-    deleteComparison,
-    getSavedComparisons,
     saveLoanProfile,
-    saveComparison,
     savePersonalProfile,
   } from '../utils/api';
   import { getRecommendations } from '../utils/recommendations';
@@ -116,26 +113,6 @@
     };
   }
 
-  function buildComparisonSnapshot(profileState, selectedLoanTypes) {
-    return {
-      loanAmount: profileState.loanAmount,
-      tenure: profileState.tenure,
-      selectedTypes: selectedLoanTypes,
-      generatedAt: new Date().toISOString(),
-    };
-  }
-
-  function formatSavedComparison(selectedLoans) {
-    if (!selectedLoans) {
-      return 'Saved comparison';
-    }
-
-    const amount = selectedLoans.loanAmount ?? selectedLoans.amount;
-    const tenure = selectedLoans.tenure ?? selectedLoans.years;
-    const selectedTypes = Array.isArray(selectedLoans.selectedTypes) ? selectedLoans.selectedTypes.length : 0;
-    return `${formatCompactINR(amount || 0)} over ${tenure || 0} years${selectedTypes ? ` • ${selectedTypes} filter(s)` : ''}`;
-  }
-
   export default function Dashboard() {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('profile');
@@ -143,8 +120,6 @@
     const [selectedTypes, setSelectedTypes] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [profileError, setProfileError] = useState('');
-    const [savedComparisons, setSavedComparisons] = useState([]);
-    const [comparisonError, setComparisonError] = useState('');
     const [adminStats, setAdminStats] = useState(null);
     const [adminStatsError, setAdminStatsError] = useState('');
     const authUser = getAuthUser();
@@ -206,29 +181,6 @@
       };
     }, [isAdmin]);
 
-    useEffect(() => {
-      let active = true;
-
-      const loadComparisons = async () => {
-        try {
-          const response = await getSavedComparisons();
-          if (active) {
-            setSavedComparisons(Array.isArray(response) ? response : []);
-          }
-        } catch (error) {
-          if (active) {
-            setComparisonError(error.message || 'Failed to load saved comparisons');
-          }
-        }
-      };
-
-      loadComparisons();
-
-      return () => {
-        active = false;
-      };
-    }, []);
-
     const handleProfileSubmit = async (data) => {
       const nextProfile = { ...profile, ...data };
       setProfile(nextProfile);
@@ -271,26 +223,6 @@
       }
     };
 
-    const handleSaveComparison = async () => {
-      try {
-        const response = await saveComparison(buildComparisonSnapshot(profile, selectedTypes));
-        setSavedComparisons((current) => [response, ...current]);
-        setComparisonError('');
-      } catch (error) {
-        setComparisonError(error.message || 'Failed to save comparison');
-      }
-    };
-
-    const handleDeleteComparison = async (comparisonId) => {
-      try {
-        await deleteComparison(comparisonId);
-        setSavedComparisons((current) => current.filter((comparison) => comparison.id !== comparisonId));
-        setComparisonError('');
-      } catch (error) {
-        setComparisonError(error.message || 'Failed to delete comparison');
-      }
-    };
-
     const handleLogout = () => {
       clearAuthToken();
       navigate('/login', { replace: true });
@@ -316,51 +248,6 @@
               <p className="text-sm text-[var(--text-muted)]">
                 Comparing EMIs for {formatCompactINR(profile.loanAmount)} over {profile.tenure} years
               </p>
-
-              <div className="luxury-panel rounded-[1.4rem] p-4 transition-all hover:shadow-[0_20px_44px_rgba(7,34,59,0.16)]">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <h3 className="text-sm font-semibold tracking-wide text-[var(--text-primary)]">Saved comparisons</h3>
-                    <p className="text-xs text-[var(--text-muted)]">Persist the current filter set and revisit it later.</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleSaveComparison}
-                    className="rounded-full border border-[var(--accent)] bg-[var(--accent)] px-4 py-2 text-xs font-semibold text-white shadow-[0_12px_22px_rgba(15,118,110,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[var(--accent-strong)]"
-                  >
-                    Save current view
-                  </button>
-                </div>
-
-                {comparisonError ? (
-                  <p className="mb-3 text-xs font-medium text-red-600">{comparisonError}</p>
-                ) : null}
-
-                {savedComparisons.length > 0 ? (
-                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    {savedComparisons.map((comparison) => (
-                      <div key={comparison.id} className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-4 shadow-[0_10px_22px_rgba(7,34,59,0.08)]">
-                        <p className="text-sm font-semibold text-[var(--text-primary)]">{formatSavedComparison(comparison.selectedLoans)}</p>
-                        <p className="mt-1 text-xs text-[var(--text-muted)]">
-                          Saved {comparison.createdAt ? new Date(comparison.createdAt).toLocaleString() : 'recently'}
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteComparison(comparison.id)}
-                          className="mt-3 text-xs font-semibold text-red-600 hover:underline"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <EmptyState
-                    title="No saved comparisons yet"
-                    description="Save the current comparison view to keep a history of your shortlist."
-                  />
-                )}
-              </div>
 
               <div className="luxury-panel rounded-[1.4rem] p-4 transition-all hover:shadow-[0_20px_44px_rgba(7,34,59,0.16)]">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
