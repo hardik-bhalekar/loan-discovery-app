@@ -25,7 +25,6 @@
   import PremiumCard from '../components/ui/PremiumCard';
   import EmptyState from '../components/ui/EmptyState';
   import LoanIntelligenceCard from '../components/LoanIntelligenceCard';
-  import StatementUpload from '../components/StatementUpload';
   import {
     clearAuthToken,
     getAuthUser,
@@ -47,7 +46,6 @@
     { id: 'emi', label: 'EMI Calculator', icon: Calculator },
     { id: 'compare', label: 'Comparison', icon: GitCompare },
     { id: 'recommend', label: 'Top Picks', icon: Award },
-    { id: 'statements', label: 'Bank Statements', icon: FileSpreadsheet },
     { id: 'ifsc', label: 'IFSC Lookup', icon: Building2 },
   ];
 
@@ -428,8 +426,7 @@
           ) : (
             <EmptyState title="No recommendations yet" description="Update profile details and try again." />
           );
-        case 'statements':
-          return <StatementUpload />;
+
         case 'ifsc':
           return <IfscLookup />
         case 'admin':
