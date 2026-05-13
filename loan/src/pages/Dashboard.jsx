@@ -24,7 +24,6 @@
   import ThemeToggle from '../components/ThemeToggle';
   import PremiumCard from '../components/ui/PremiumCard';
   import EmptyState from '../components/ui/EmptyState';
-  import LoanIntelligenceCard from '../components/LoanIntelligenceCard';
   import {
     clearAuthToken,
     getAuthUser,
@@ -307,7 +306,6 @@
           return (
             <div className="space-y-6">
               <EligibilityResult profile={profile} />
-              <LoanIntelligenceCard profile={profile} />
             </div>
           );
         case 'emi':
