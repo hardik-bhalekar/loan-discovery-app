@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { Trophy, Award, Medal, CheckCircle, ArrowRight } from 'lucide-react';
+import { Trophy, Award, Medal, CheckCircle, ExternalLink } from 'lucide-react';
 import { formatCurrency } from '../utils/emiCalculator';
-import KfsModal from './KfsModal';
 
 const badgeConfig = {
   'Best Match': {
@@ -25,8 +23,13 @@ export default function RecommendationCard({ loan }) {
   const badge = loan.badge ? badgeConfig[loan.badge] : null;
   const BadgeIcon = badge?.icon;
   const isBest = loan.badge === 'Best Match';
-  const [showKfs, setShowKfs] = useState(false);
-  const [accepted, setAccepted] = useState(false);
+
+  const handleVisitBank = () => {
+    if (loan.applyUrl || loan.redirectUrl) {
+      const url = loan.applyUrl || loan.redirectUrl;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <article
@@ -79,26 +82,13 @@ export default function RecommendationCard({ loan }) {
       
       <div className="mt-5">
         <button 
-          onClick={() => setShowKfs(true)}
-          disabled={accepted}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold hover:bg-[var(--accent-strong)] transition-all shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:bg-emerald-600 disabled:cursor-not-allowed"
+          onClick={handleVisitBank}
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold hover:bg-[var(--accent-strong)] transition-all shadow-lg active:scale-[0.98]"
         >
-          {accepted ? 'Application Started' : 'Apply Now'}
-          {!accepted && <ArrowRight className="w-4 h-4" />}
+          Visit Bank Website
+          <ExternalLink className="w-4 h-4" />
         </button>
       </div>
-
-      {showKfs && (
-        <KfsModal 
-          loan={loan} 
-          onClose={() => setShowKfs(false)} 
-          onAccept={(acceptedLoan) => {
-            setShowKfs(false);
-            setAccepted(true);
-            alert(`Application started for ${acceptedLoan.bankName}!`);
-          }}
-        />
-      )}
     </article>
   );
 }
