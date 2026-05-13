@@ -13,12 +13,14 @@ import {
   ListChecks,
   Sparkles,
   CheckCircle,
+  GraduationCap,
+  Info,
 } from 'lucide-react';
 import Button from './Button';
 
 const loanTypeOptions = ['Home Loan', 'Car Loan', 'Personal Loan', 'Education Loan', 'Business Loan'];
 const loanPurposes = ['Home Purchase', 'Vehicle Purchase', 'Education', 'Business Expansion', 'Medical', 'Wedding', 'Debt Consolidation', 'Personal Use'];
-const employmentTypes = ['Salaried', 'Self-Employed', 'Business Owner', 'Freelancer', 'Retired'];
+const employmentTypes = ['Salaried', 'Self-Employed', 'Business Owner', 'Freelancer', 'Retired', 'Student'];
 const ratePreferences = ['Fixed', 'Floating', 'Either'];
 const bankOptions = ['SBI', 'HDFC', 'ICICI', 'Axis', 'Kotak', 'PNB', 'Bank of Baroda', 'Canara'];
 
@@ -92,7 +94,22 @@ export default function LoanForm({ onSubmit, initialProfile }) {
     });
   }, [initialProfile]);
 
+  const isStudent = form.employmentType === 'Student';
+
   const update = (field, value) => {
+    // When switching to Student, reset employment-related fields
+    if (field === 'employmentType' && value === 'Student') {
+      setForm((prev) => ({
+        ...prev,
+        employmentType: value,
+        employerName: '',
+        workExperience: 0,
+        monthlyIncome: 0,
+        additionalIncome: 0,
+      }));
+      if (errors[field]) setErrors((prev) => ({ ...prev, [field]: null }));
+      return;
+    }
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: null }));
   };
@@ -110,7 +127,7 @@ export default function LoanForm({ onSubmit, initialProfile }) {
     const nextErrors = {};
     if (Number(form.loanAmount) < 10000) nextErrors.loanAmount = 'Minimum loan amount is Rs 10,000';
     if (Number(form.tenure) < 1 || Number(form.tenure) > 30) nextErrors.tenure = 'Tenure must be between 1 and 30 years';
-    if (Number(form.monthlyIncome) < 5000) nextErrors.monthlyIncome = 'Monthly income should be at least Rs 5,000';
+    if (!isStudent && Number(form.monthlyIncome) < 5000) nextErrors.monthlyIncome = 'Monthly income should be at least Rs 5,000';
     if (Number(form.creditScore) < 300 || Number(form.creditScore) > 900) nextErrors.creditScore = 'Credit score must be between 300 and 900';
     return nextErrors;
   };
@@ -128,6 +145,7 @@ export default function LoanForm({ onSubmit, initialProfile }) {
   };
 
   const inputClass = 'w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-4 py-2.5 text-sm text-[var(--text-primary)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/25';
+  const disabledInputClass = 'w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-2.5 text-sm text-[var(--text-faint)] outline-none cursor-not-allowed opacity-60';
   const panelClass = 'luxury-panel rounded-[1.4rem] p-5';
   const sectionTitleClass = 'mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]';
 
@@ -199,12 +217,16 @@ export default function LoanForm({ onSubmit, initialProfile }) {
 
         <div className={`${panelClass} hover-soft`}>
           <h3 className={sectionTitleClass}>
-            <Briefcase className="h-4 w-4 text-[var(--accent)]" />
-            Employment
+            {isStudent ? (
+              <GraduationCap className="h-4 w-4 text-[var(--accent)]" />
+            ) : (
+              <Briefcase className="h-4 w-4 text-[var(--accent)]" />
+            )}
+            {isStudent ? 'Student Profile' : 'Employment'}
           </h3>
 
           <div className="space-y-4">
-            <InputField label="Employment Type" icon={<Briefcase />}>
+            <InputField label="Employment Type" icon={isStudent ? <GraduationCap /> : <Briefcase />}>
               <select value={form.employmentType} onChange={(e) => update('employmentType', e.target.value)} className={inputClass}>
                 {employmentTypes.map((option) => (
                   <option key={option} value={option}>
@@ -214,13 +236,23 @@ export default function LoanForm({ onSubmit, initialProfile }) {
               </select>
             </InputField>
 
-            <InputField label="Employer Name" icon={<Building2 />}>
+            {isStudent && (
+              <div className="flex items-start gap-2.5 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
+                <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                <p className="text-xs leading-relaxed text-blue-300">
+                  As a student, employment fields are not applicable. Consider applying for an <strong>Education Loan</strong> for the best rates and terms.
+                </p>
+              </div>
+            )}
+
+            <InputField label={isStudent ? 'Institution Name' : 'Employer Name'} icon={<Building2 />}>
               <input
                 type="text"
-                value={form.employerName}
+                value={isStudent ? '' : form.employerName}
                 onChange={(e) => update('employerName', e.target.value)}
-                className={inputClass}
-                placeholder="Company/Organization"
+                className={isStudent ? disabledInputClass : inputClass}
+                placeholder={isStudent ? 'N/A' : 'Company/Organization'}
+                disabled={isStudent}
               />
             </InputField>
 
@@ -229,20 +261,24 @@ export default function LoanForm({ onSubmit, initialProfile }) {
                 type="number"
                 min="0"
                 step="0.5"
-                value={form.workExperience}
+                value={isStudent ? 0 : form.workExperience}
                 onChange={(e) => update('workExperience', Number(e.target.value))}
-                className={inputClass}
+                className={isStudent ? disabledInputClass : inputClass}
+                placeholder={isStudent ? 'N/A' : undefined}
+                disabled={isStudent}
               />
             </InputField>
 
-            <InputField label="Monthly Income" icon={<IndianRupee />} error={errors.monthlyIncome}>
+            <InputField label="Monthly Income" icon={<IndianRupee />} error={isStudent ? null : errors.monthlyIncome}>
               <input
                 type="number"
                 min="0"
                 step="1000"
-                value={form.monthlyIncome}
+                value={isStudent ? 0 : form.monthlyIncome}
                 onChange={(e) => update('monthlyIncome', Number(e.target.value))}
-                className={inputClass}
+                className={isStudent ? disabledInputClass : inputClass}
+                placeholder={isStudent ? 'N/A' : undefined}
+                disabled={isStudent}
               />
             </InputField>
 
@@ -251,9 +287,11 @@ export default function LoanForm({ onSubmit, initialProfile }) {
                 type="number"
                 min="0"
                 step="1000"
-                value={form.additionalIncome}
+                value={isStudent ? 0 : form.additionalIncome}
                 onChange={(e) => update('additionalIncome', Number(e.target.value))}
-                className={inputClass}
+                className={isStudent ? disabledInputClass : inputClass}
+                placeholder={isStudent ? 'N/A' : undefined}
+                disabled={isStudent}
               />
             </InputField>
           </div>
