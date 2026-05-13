@@ -5,6 +5,8 @@ import com.loandiscovery.entity.FraudAlert;
 import com.loandiscovery.entity.LoanDecision;
 import com.loandiscovery.entity.OtpRecord;
 import com.loandiscovery.model.User;
+import com.loandiscovery.security.AuthenticatedUser;
+import com.loandiscovery.security.CurrentUserService;
 import com.loandiscovery.repository.FraudAlertRepository;
 import com.loandiscovery.repository.LoanDecisionRepository;
 import com.loandiscovery.repository.OtpRecordRepository;
@@ -15,8 +17,11 @@ import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class FraudService {
@@ -25,13 +30,19 @@ public class FraudService {
     private final FraudAlertRepository fraudAlertRepository;
     private final LoanDecisionRepository loanDecisionRepository;
     private final OtpRecordRepository otpRecordRepository;
+    private final CurrentUserService currentUserService;
+    private final String adminEmail;
 
     public FraudService(FraudAlertRepository fraudAlertRepository,
                         LoanDecisionRepository loanDecisionRepository,
-                        OtpRecordRepository otpRecordRepository) {
+                        OtpRecordRepository otpRecordRepository,
+                        CurrentUserService currentUserService,
+                        @Value("${app.admin.email}") String adminEmail) {
         this.fraudAlertRepository = fraudAlertRepository;
         this.loanDecisionRepository = loanDecisionRepository;
         this.otpRecordRepository = otpRecordRepository;
+        this.currentUserService = currentUserService;
+        this.adminEmail = adminEmail;
     }
 
     @Transactional
@@ -94,6 +105,10 @@ public class FraudService {
 
     @Transactional(readOnly = true)
     public List<FraudAlert> getUnresolvedAlerts() {
+        AuthenticatedUser currentUser = currentUserService.getAuthenticatedUser();
+        if (currentUser.email() == null || !currentUser.email().equalsIgnoreCase(adminEmail)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Admin access required");
+        }
         return fraudAlertRepository.findByResolvedFalseOrderByCreatedAtDesc();
     }
 }

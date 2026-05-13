@@ -1,6 +1,7 @@
 package com.loandiscovery.controller;
 
 import com.loandiscovery.entity.UserConsent;
+import com.loandiscovery.security.ClientIpResolver;
 import com.loandiscovery.service.ConsentService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,28 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConsentController {
 
     private final ConsentService consentService;
+    private final ClientIpResolver clientIpResolver;
 
-    public ConsentController(ConsentService consentService) {
+    public ConsentController(ConsentService consentService, ClientIpResolver clientIpResolver) {
         this.consentService = consentService;
+        this.clientIpResolver = clientIpResolver;
     }
 
     @PostMapping
     public ResponseEntity<UserConsent> recordConsent(@RequestBody Map<String, String> payload, HttpServletRequest request) {
         String consentType = payload.get("consentType");
-        String ip = resolveClientIp(request);
+        String ip = clientIpResolver.resolve(request);
         return ResponseEntity.ok(consentService.recordConsent(consentType, ip));
     }
 
     @GetMapping
     public ResponseEntity<List<UserConsent>> getConsents() {
         return ResponseEntity.ok(consentService.getActiveConsents());
-    }
-
-    private String resolveClientIp(HttpServletRequest request) {
-        String xfHeader = request.getHeader("X-Forwarded-For");
-        if (xfHeader == null || xfHeader.isEmpty()) {
-            return request.getRemoteAddr();
-        }
-        return xfHeader.split(",")[0].trim();
     }
 }

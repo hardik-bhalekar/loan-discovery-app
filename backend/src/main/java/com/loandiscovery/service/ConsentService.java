@@ -6,8 +6,10 @@ import com.loandiscovery.repository.UserConsentRepository;
 import com.loandiscovery.security.CurrentUserService;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ConsentService {
@@ -22,6 +24,9 @@ public class ConsentService {
 
     @Transactional
     public UserConsent recordConsent(String consentType, String ipAddress) {
+        if (consentType == null || consentType.isBlank() || consentType.length() > 100) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid consent type");
+        }
         User user = currentUserService.getCurrentUserEntity();
         
         UserConsent consent = new UserConsent();

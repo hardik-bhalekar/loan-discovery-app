@@ -5,8 +5,8 @@ import com.loandiscovery.model.User;
 import com.loandiscovery.repository.OtpRecordRepository;
 import com.loandiscovery.repository.UserRepository;
 import com.loandiscovery.security.CurrentUserService;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
-import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class KycService {
     private static final Logger log = LoggerFactory.getLogger(KycService.class);
+    private static final SecureRandom OTP_RANDOM = new SecureRandom();
 
     private final OtpRecordRepository otpRepository;
     private final UserRepository userRepository;
@@ -35,7 +36,7 @@ public class KycService {
     @Transactional
     public void sendOtp(String phone) {
         // Rate limiting logic could be added here
-        String otp = String.format("%06d", new Random().nextInt(999999));
+        String otp = String.format("%06d", OTP_RANDOM.nextInt(1_000_000));
         
         OtpRecord record = new OtpRecord();
         record.setIdentifier(phone);

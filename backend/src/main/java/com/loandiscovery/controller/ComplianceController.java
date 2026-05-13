@@ -1,5 +1,6 @@
 package com.loandiscovery.controller;
 
+import com.loandiscovery.security.ClientIpResolver;
 import com.loandiscovery.service.ComplianceService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ComplianceController {
 
     private final ComplianceService complianceService;
+    private final ClientIpResolver clientIpResolver;
 
-    public ComplianceController(ComplianceService complianceService) {
+    public ComplianceController(ComplianceService complianceService, ClientIpResolver clientIpResolver) {
         this.complianceService = complianceService;
+        this.clientIpResolver = clientIpResolver;
     }
 
     @GetMapping
@@ -26,16 +29,8 @@ public class ComplianceController {
 
     @DeleteMapping
     public ResponseEntity<Void> deleteAccountData(HttpServletRequest request) {
-        String clientIp = resolveClientIp(request);
+        String clientIp = clientIpResolver.resolve(request);
         complianceService.deleteUserData(clientIp);
         return ResponseEntity.noContent().build();
-    }
-
-    private String resolveClientIp(HttpServletRequest request) {
-        String xfHeader = request.getHeader("X-Forwarded-For");
-        if (xfHeader == null || xfHeader.isEmpty()) {
-            return request.getRemoteAddr();
-        }
-        return xfHeader.split(",")[0].trim();
     }
 }

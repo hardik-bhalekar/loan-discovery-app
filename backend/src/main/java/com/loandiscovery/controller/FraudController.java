@@ -20,7 +20,6 @@ public class FraudController {
 
     @GetMapping("/alerts")
     public ResponseEntity<List<FraudAlert>> getAlerts() {
-        // Note: Realistically this endpoint should be protected by an ADMIN role
         return ResponseEntity.ok(fraudService.getUnresolvedAlerts());
     }
 }

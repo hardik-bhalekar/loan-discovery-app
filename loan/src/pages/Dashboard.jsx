@@ -26,7 +26,6 @@
   import EmptyState from '../components/ui/EmptyState';
   import LoanIntelligenceCard from '../components/LoanIntelligenceCard';
   import StatementUpload from '../components/StatementUpload';
-  import ComplianceHub from '../components/ComplianceHub';
   import {
     clearAuthToken,
     getAuthUser,
@@ -50,7 +49,6 @@
     { id: 'recommend', label: 'Top Picks', icon: Award },
     { id: 'statements', label: 'Bank Statements', icon: FileSpreadsheet },
     { id: 'ifsc', label: 'IFSC Lookup', icon: Building2 },
-    { id: 'compliance', label: 'Data & Rights', icon: ShieldCheck },
   ];
 
   const defaultProfile = {
@@ -433,9 +431,7 @@
         case 'statements':
           return <StatementUpload />;
         case 'ifsc':
-          return <IfscLookup />;
-        case 'compliance':
-          return <ComplianceHub />;
+          return <IfscLookup />
         case 'admin':
           return isAdmin ? (
             <div className="space-y-5">

@@ -2,6 +2,7 @@ package com.loandiscovery.controller;
 
 import com.loandiscovery.dto.PredictionRequest;
 import com.loandiscovery.dto.PredictionResponse;
+import com.loandiscovery.security.ClientIpResolver;
 import com.loandiscovery.security.CurrentUserService;
 import com.loandiscovery.service.PredictionService;
 import com.loandiscovery.service.RateLimitingService;
@@ -31,13 +32,16 @@ public class PredictionController {
     private final PredictionService predictionService;
     private final CurrentUserService currentUserService;
     private final RateLimitingService rateLimitingService;
+    private final ClientIpResolver clientIpResolver;
 
     public PredictionController(PredictionService predictionService, 
                                 CurrentUserService currentUserService,
-                                RateLimitingService rateLimitingService) {
+                                RateLimitingService rateLimitingService,
+                                ClientIpResolver clientIpResolver) {
         this.predictionService = predictionService;
         this.currentUserService = currentUserService;
         this.rateLimitingService = rateLimitingService;
+        this.clientIpResolver = clientIpResolver;
     }
 
     /**
@@ -50,7 +54,7 @@ public class PredictionController {
             @Valid @RequestBody PredictionRequest request,
             HttpServletRequest httpRequest) {
 
-        String clientIp = resolveClientIp(httpRequest);
+        String clientIp = clientIpResolver.resolve(httpRequest);
         
         // Rate Limiting: Max 10 requests per minute per IP
         if (!rateLimitingService.allowRequest(clientIp, 10, Duration.ofMinutes(1))) {
@@ -70,7 +74,10 @@ public class PredictionController {
             @Valid @RequestBody PredictionRequest request,
             HttpServletRequest httpRequest) {
 
-        String clientIp = resolveClientIp(httpRequest);
+        String clientIp = clientIpResolver.resolve(httpRequest);
+        if (!rateLimitingService.allowRequest(clientIp, 10, Duration.ofMinutes(1))) {
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
+        }
         PredictionResponse response = predictionService.computeEligibility(request, clientIp);
         return ResponseEntity.ok(response);
     }
@@ -89,16 +96,4 @@ public class PredictionController {
         return ResponseEntity.ok(predictionService.getMyDecisions(userId, page, boundedSize));
     }
 
-    /**
-     * Best-effort client IP resolution. Takes the first IP from
-     * X-Forwarded-For (original client) to prevent proxy spoofing,
-     * or falls back to remote address.
-     */
-    private String resolveClientIp(HttpServletRequest request) {
-        String xff = request.getHeader("X-Forwarded-For");
-        if (xff != null && !xff.isBlank()) {
-            return xff.split(",")[0].trim();
-        }
-        return request.getRemoteAddr();
-    }
 }
