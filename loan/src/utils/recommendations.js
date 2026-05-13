@@ -1,15 +1,18 @@
-import { bankData } from '../data/bankData';
+import { bankData as staticBankData } from '../data/bankData';
 import { calculateEMI } from './emiCalculator';
 
 /**
  * Score and rank banks based on user profile to produce recommendations.
  * Lower score = better.
+ * @param {Object} profile — user loan profile
+ * @param {Array} [banks] — optional bank data array (defaults to static data, but can accept live rates)
  */
-export function getRecommendations(profile) {
+export function getRecommendations(profile, banks) {
   const { loanAmount, tenure, creditScore, monthlyIncome } = profile;
   const tenureMonths = (tenure || 5) * 12;
+  const bankList = banks || staticBankData;
 
-  const scored = bankData
+  const scored = bankList
     .filter((bank) => loanAmount <= bank.maxLoanAmount)
     .map((bank) => {
       const { emi, totalInterest, totalPayment } = calculateEMI(
@@ -36,6 +39,7 @@ export function getRecommendations(profile) {
       if (bank.rating >= 4.5) reasons.push('Highly rated bank');
       if (affordable) reasons.push('Affordable EMI within 40% of income');
       if (bank.tenureRange.max >= tenure) reasons.push('Flexible tenure options');
+      if (bank.liveData) reasons.push('Live rates from BankBazaar');
 
       return {
         ...bank,
@@ -57,3 +61,4 @@ export function getRecommendations(profile) {
     badge: index === 0 ? 'Best Match' : index === 1 ? 'Runner Up' : index === 2 ? 'Great Option' : null,
   }));
 }
+

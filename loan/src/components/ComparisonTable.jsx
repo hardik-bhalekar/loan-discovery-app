@@ -1,10 +1,37 @@
-import { useMemo } from 'react';
-import { ExternalLink, Star } from 'lucide-react';
-import bankData from '../data/bankData';
+import { useMemo, useState, useEffect } from 'react';
+import { ExternalLink, Star, RefreshCw, Wifi, WifiOff } from 'lucide-react';
+import { bankData as staticBankData } from '../data/bankData';
+import { getLiveBankData } from '../services/bankDataService';
 import { calculateEMI, formatCurrency } from '../utils/emiCalculator';
 import { formatCompactINR } from '../utils/formatters';
 
 export default function ComparisonTable({ loanAmount = 1000000, tenure = 5, selectedTypes = [] }) {
+  const [bankData, setBankData] = useState(staticBankData);
+  const [dataSource, setDataSource] = useState('static');
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadLiveRates() {
+      setLoading(true);
+      try {
+        const result = await getLiveBankData();
+        if (!cancelled) {
+          setBankData(result.data);
+          setDataSource(result.source);
+          setLastUpdated(result.lastUpdated);
+        }
+      } catch {
+        // Fallback already handled by service
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    loadLiveRates();
+    return () => { cancelled = true; };
+  }, []);
+
   const rows = useMemo(() => {
     const principal = Number(loanAmount) || 0;
     const tenureYears = Number(tenure) || 0;
@@ -29,10 +56,46 @@ export default function ComparisonTable({ loanAmount = 1000000, tenure = 5, sele
         };
       })
       .sort((a, b) => a.emi - b.emi);
-  }, [loanAmount, tenure, selectedTypes]);
+  }, [loanAmount, tenure, selectedTypes, bankData]);
+
+  const formattedDate = lastUpdated
+    ? new Date(lastUpdated).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+    : null;
 
   return (
     <div className="table-frame">
+      {/* Live rates status bar */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '8px 16px',
+        borderBottom: '1px solid var(--border-subtle)',
+        fontSize: '11px',
+        color: 'var(--text-faint)',
+        background: 'color-mix(in oklab, var(--bg-secondary) 60%, transparent)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {loading ? (
+            <RefreshCw className="h-3 w-3 animate-spin" style={{ color: 'var(--accent)' }} />
+          ) : dataSource === 'live' ? (
+            <Wifi className="h-3 w-3" style={{ color: '#22c55e' }} />
+          ) : (
+            <WifiOff className="h-3 w-3" style={{ color: '#f59e0b' }} />
+          )}
+          <span>
+            {loading
+              ? 'Fetching live rates…'
+              : dataSource === 'live'
+                ? 'Live rates from BankBazaar'
+                : 'Using cached rates'}
+          </span>
+        </div>
+        {formattedDate && !loading && (
+          <span>Last updated: {formattedDate}</span>
+        )}
+      </div>
+
       <div className="overflow-x-auto">
         <table className="w-full min-w-[920px]">
           <thead className="sticky top-0 z-10">
@@ -81,6 +144,12 @@ export default function ComparisonTable({ loanAmount = 1000000, tenure = 5, sele
                           <span>{bank.rating}</span>
                           <span>•</span>
                           <span>Max {formatCompactINR(bank.maxLoanAmount)}</span>
+                          {bank.liveData && (
+                            <>
+                              <span>•</span>
+                              <span style={{ color: '#22c55e', fontWeight: 600 }}>LIVE</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -92,12 +161,17 @@ export default function ComparisonTable({ loanAmount = 1000000, tenure = 5, sele
                     </span>
                   </td>
 
-                  <td className="px-5 py-4 text-sm font-semibold text-[var(--accent)]">{bank.interestRate}%</td>
+                  <td className="px-5 py-4 text-sm font-semibold text-[var(--accent)]">
+                    {bank.interestRate}%
+                    {bank.interestRateMax && bank.interestRateMax !== bank.interestRate && (
+                      <span className="text-xs text-[var(--text-faint)]"> – {bank.interestRateMax}%</span>
+                    )}
+                  </td>
 
                   <td className="px-5 py-4 text-sm font-semibold text-[var(--text-primary)]">{formatCurrency(bank.emi)}</td>
 
                   <td className="px-5 py-4 text-sm text-[var(--text-muted)]">
-                    {bank.processingFee}% ({formatCurrency(bank.processingFeeAmount)})
+                    {bank.processingFeeText || `${bank.processingFee}% (${formatCurrency(bank.processingFeeAmount)})`}
                   </td>
 
                   <td className="px-5 py-4 text-sm font-semibold text-[var(--text-primary)]">{formatCurrency(bank.totalCost)}</td>
@@ -121,3 +195,4 @@ export default function ComparisonTable({ loanAmount = 1000000, tenure = 5, sele
     </div>
   );
 }
+
