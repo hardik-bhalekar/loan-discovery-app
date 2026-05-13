@@ -33,6 +33,7 @@
     savePersonalProfile,
   } from '../utils/api';
   import { getRecommendations } from '../utils/recommendations';
+  import { getLiveBankData } from '../services/bankDataService';
   import { formatCompactINR } from '../utils/formatters';
 
   const tabs = [
@@ -128,8 +129,17 @@
     const visibleTabs = isAdmin ? [...tabs, { id: 'admin', label: 'Admin', icon: ShieldCheck }] : tabs;
 
     const loanTypes = ['Home Loan', 'Car Loan', 'Personal Loan', 'Education Loan', 'Business Loan'];
+    const [liveBanks, setLiveBanks] = useState(null);
 
-    const recommendations = useMemo(() => getRecommendations(profile), [profile]);
+    useEffect(() => {
+      let active = true;
+      getLiveBankData().then((result) => {
+        if (active) setLiveBanks(result.data);
+      }).catch(() => {});
+      return () => { active = false; };
+    }, []);
+
+    const recommendations = useMemo(() => getRecommendations(profile, liveBanks), [profile, liveBanks]);
 
     useEffect(() => {
       let active = true;

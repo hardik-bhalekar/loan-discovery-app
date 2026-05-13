@@ -18,7 +18,7 @@ import Button from './Button';
 
 const loanTypeOptions = ['Home Loan', 'Car Loan', 'Personal Loan', 'Education Loan', 'Business Loan'];
 const loanPurposes = ['Home Purchase', 'Vehicle Purchase', 'Education', 'Business Expansion', 'Medical', 'Wedding', 'Debt Consolidation', 'Personal Use'];
-const employmentTypes = ['Salaried', 'Self-Employed', 'Business Owner', 'Freelancer', 'Retired'];
+const employmentTypes = ['Salaried', 'Self-Employed', 'Student', 'Business Owner', 'Freelancer', 'Retired'];
 const ratePreferences = ['Fixed', 'Floating', 'Either'];
 const bankOptions = ['SBI', 'HDFC', 'ICICI', 'Axis', 'Kotak', 'PNB', 'Bank of Baroda', 'Canara'];
 

@@ -93,24 +93,7 @@ export default function ScrollMorphHero() {
             </Link>
           </motion.div>
 
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-10 grid grid-cols-3 gap-4 border-t border-[var(--border-subtle)] pt-8 sm:gap-6"
-          >
-            {[
-              { number: '100K+', label: 'Users' },
-              { number: '₹50Cr', label: 'Loan Volume' },
-              { number: '4.8★', label: 'Rating' }
-            ].map((stat, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.1 }} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-[var(--accent)] mb-1">{stat.number}</div>
-                <div className="text-xs sm:text-sm text-[var(--text-faint)]">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+
         </div>
       </motion.div>
 
