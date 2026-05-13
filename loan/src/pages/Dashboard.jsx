@@ -20,6 +20,7 @@
   import EMICalculator from '../components/EMICalculator';
   import ComparisonTable from '../components/ComparisonTable';
   import RecommendationCard from '../components/RecommendationCard';
+  import IfscLookup from '../components/IfscLookup';
   import ThemeToggle from '../components/ThemeToggle';
   import PremiumCard from '../components/ui/PremiumCard';
   import EmptyState from '../components/ui/EmptyState';
@@ -45,6 +46,7 @@
     { id: 'emi', label: 'EMI Calculator', icon: Calculator },
     { id: 'compare', label: 'Comparison', icon: GitCompare },
     { id: 'recommend', label: 'Top Picks', icon: Award },
+    { id: 'ifsc', label: 'IFSC Lookup', icon: Building2 },
   ];
 
   const defaultProfile = {
@@ -424,7 +426,8 @@
           ) : (
             <EmptyState title="No recommendations yet" description="Update profile details and try again." />
           );
-
+        case 'ifsc':
+          return <IfscLookup />;
         case 'admin':
           return isAdmin ? (
             <div className="space-y-5">
